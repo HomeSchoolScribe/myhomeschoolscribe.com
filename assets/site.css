@@ -224,3 +224,16 @@ th { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-tran
 .signup button { cursor:pointer; }
 .visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .doc ol { padding-left:1.3rem; max-width:64ch; }
+/* State guides */
+.doc .wrap.wide { max-width:980px; }
+.tier { font-family:var(--mono); font-size:0.78rem; letter-spacing:0.06em; color:var(--ink-2); margin:-0.4rem 0 1rem; }
+.tier-high::before, .tier-moderate::before, .tier-low::before, .tier-none::before { content:""; display:inline-block; width:0.6em; height:0.6em; border-radius:50%; margin-right:0.5em; vertical-align:0.05em; }
+.tier-high::before { background:#B7472A; } .tier-moderate::before { background:#B98A5A; } .tier-low::before { background:#2E6B9E; } .tier-none::before { background:#2F6B4A; }
+table.req th[scope="row"] { width:11rem; font-family:var(--sans); font-size:0.95rem; font-weight:600; color:var(--ink); text-transform:none; letter-spacing:0; background:var(--paper); }
+.states-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:0.8rem; margin:0.6rem 0 1.8rem; }
+.state-card { display:flex; flex-direction:column; gap:0.3rem; background:var(--paper-2); border:1px solid var(--rule); border-radius:12px; padding:0.9rem 1rem; text-decoration:none; color:var(--ink); }
+.state-card:hover { border-color:var(--slate); }
+.state-card strong { font-family:var(--serif); font-size:1.05rem; }
+.state-card span { font-size:0.9rem; color:var(--ink-2); }
+.state-card em { font-family:var(--mono); font-style:normal; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); }
+.cta-row { display:flex; flex-wrap:wrap; gap:0.8rem; margin:1.6rem 0 0; }
