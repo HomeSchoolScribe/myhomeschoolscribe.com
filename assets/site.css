@@ -237,3 +237,5 @@ table.req th[scope="row"] { width:11rem; font-family:var(--sans); font-size:0.95
 .state-card span { font-size:0.9rem; color:var(--ink-2); }
 .state-card em { font-family:var(--mono); font-style:normal; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); }
 .cta-row { display:flex; flex-wrap:wrap; gap:0.8rem; margin:1.6rem 0 0; }
+.tip { background:var(--slate-soft); border-radius:10px; padding:0.8rem 1rem; font-size:0.95rem; margin:1.2rem 0; max-width:64ch; }
+.tip b { font-family:var(--mono); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); display:block; margin-bottom:0.25rem; }
