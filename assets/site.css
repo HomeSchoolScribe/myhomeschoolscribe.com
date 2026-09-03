@@ -239,3 +239,12 @@ table.req th[scope="row"] { width:11rem; font-family:var(--sans); font-size:0.95
 .cta-row { display:flex; flex-wrap:wrap; gap:0.8rem; margin:1.6rem 0 0; }
 .tip { background:var(--slate-soft); border-radius:10px; padding:0.8rem 1rem; font-size:0.95rem; margin:1.2rem 0; max-width:64ch; }
 .tip b { font-family:var(--mono); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); display:block; margin-bottom:0.25rem; }
+/* Help center */
+.help-toc { list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-wrap:wrap; gap:0.4rem 0.6rem; }
+.help-toc a { display:inline-block; font-size:0.92rem; padding:0.3rem 0.7rem; border:1px solid var(--rule); border-radius:999px; text-decoration:none; color:var(--ink-2); background:var(--paper-2); }
+.help-toc a:hover { border-color:var(--slate); color:var(--slate); }
+.help-section { padding:1.6rem 0 0.4rem; border-top:1px solid var(--rule); scroll-margin-top:4.5rem; }
+.help-section h2 { margin-bottom:0.6rem; }
+.video-slot { font-size:0.92rem; color:var(--ink-2); background:var(--slate-soft); border-radius:8px; padding:0.5rem 0.8rem; }
+.video-slot .meta { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); margin-right:0.4rem; }
+.video-slot em { color:var(--ink-3); }
