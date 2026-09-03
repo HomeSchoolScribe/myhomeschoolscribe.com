@@ -7,7 +7,7 @@ The public site for HomeSchool Scribe. Plain HTML and CSS, no build step, hosted
 | File | What it is |
 |---|---|
 | `index.html` | Home: the launch intro, how it works, records, state picker, Student Mode, pricing, privacy summary. |
-| `privacy.html` | The privacy policy. Generated from `../docs/PRIVACY.md`; edit the Markdown and re-run the generator, or edit both. App Store Connect links here. |
+| `privacy.html` | The privacy policy. Generated from `../docs/PRIVACY.md` by `design/_tools/build_website.py` (which writes every page); edit the Markdown, then re-run it. App Store Connect links here. |
 | `support.html` | Support address and common questions. App Store Connect links here. |
 | `press.html` | Boilerplate, logo files, colors, screenshots. |
 | `404.html` | GitHub Pages serves this for unknown addresses. |
