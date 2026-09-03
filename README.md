@@ -1,2 +1,37 @@
-# myhomeschoolscribe.com
-Website for HomeSchool Scribe, the homeschool planner that keeps the records for you. myhomeschoolscribe.com
+# www.myhomeschoolscribe.com
+
+The public site for HomeSchool Scribe. Plain HTML and CSS, no build step, hosted on GitHub Pages.
+
+## Pages
+
+| File | What it is |
+|---|---|
+| `index.html` | Home: the launch intro, how it works, records, state picker, Student Mode, pricing, privacy summary. |
+| `privacy.html` | The privacy policy. Generated from `../docs/PRIVACY.md`; edit the Markdown and re-run the generator, or edit both. App Store Connect links here. |
+| `support.html` | Support address and common questions. App Store Connect links here. |
+| `press.html` | Boilerplate, logo files, colors, screenshots. |
+| `404.html` | GitHub Pages serves this for unknown addresses. |
+| `assets/site.css` | All styles. Tokens follow `design/homeschool-scribe-identity`. |
+| `assets/fonts/` | Bitter, Source Sans 3, IBM Plex Mono (self-hosted, OFL licensed; licenses alongside). |
+| `assets/img/` | Logo SVGs, screenshots cropped to the phone, app icon. |
+| `assets/press/` | The downloadable press assets. |
+| `CNAME` | Tells GitHub Pages the custom domain. Keep it. |
+| `.nojekyll` | Turns Jekyll off so files are served exactly as they are. |
+
+## Publishing
+
+The site lives in the GitHub Pages repository under the `homeschoolscribe` GitHub account. To publish a new version, copy **everything in this folder** (including `CNAME` and `.nojekyll`) to the root of that repository, replacing what is there, and commit. GitHub Pages redeploys in about a minute.
+
+From a terminal, with that repository cloned next to this one:
+
+```bash
+rsync -av --delete --exclude .git --exclude README.md website/ ../homeschoolscribe.github.io/
+```
+
+then `git add -A && git commit -m "Update site" && git push` inside that clone.
+
+## Before launch
+
+- Replace the "Tell me when it launches" button in `index.html` with the App Store link (there is a comment next to it).
+- Update the date line in `privacy.html` whenever the policy changes.
+- The screenshots in `assets/img` and `assets/press` come from `design/13-AppStore-Marketing/screenshots`; regenerate them after the next round of UI changes.
