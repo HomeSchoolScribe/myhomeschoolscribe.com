@@ -216,3 +216,11 @@ th { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-tran
 /* Buttons keep their own ink on chalkboard surfaces. */
 .board a.btn-chalk { color:#1E2A33; }
 .board a.btn-slate { color:var(--slate-ink); }
+/* Sign-up forms (Mailchimp) */
+.signup { display:flex; flex-wrap:wrap; gap:0.6rem; align-items:stretch; margin:0.4rem 0; }
+.signup input[type="email"] { flex:1 1 220px; font:inherit; padding:0.7rem 0.9rem; border:1.5px solid var(--rule); border-radius:10px; background:var(--paper-2); color:var(--ink); min-width:0; }
+.masthead .signup input[type="email"] { background:rgba(247,245,240,0.12); border-color:rgba(247,245,240,0.35); color:var(--chalk); }
+.masthead .signup input::placeholder { color:rgba(247,245,240,0.55); }
+.signup button { cursor:pointer; }
+.visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.doc ol { padding-left:1.3rem; max-width:64ch; }
