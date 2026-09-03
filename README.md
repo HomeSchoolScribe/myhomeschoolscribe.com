@@ -20,12 +20,12 @@ The public site for HomeSchool Scribe. Plain HTML and CSS, no build step, hosted
 
 ## Publishing
 
-The site lives in the GitHub Pages repository under the `homeschoolscribe` GitHub account. To publish a new version, copy **everything in this folder** (including `CNAME` and `.nojekyll`) to the root of that repository, replacing what is there, and commit. GitHub Pages redeploys in about a minute.
+The site is served from the public repository `homeschoolscribe/myhomeschoolscribe.com` (branch `main`, root folder). To publish a new version, copy **everything in this folder** (including `CNAME` and `.nojekyll`) to the root of that repository, replacing what is there, and commit. GitHub Pages redeploys in about twenty seconds.
 
 From a terminal, with that repository cloned next to this one:
 
 ```bash
-rsync -av --delete --exclude .git --exclude README.md website/ ../homeschoolscribe.github.io/
+rsync -av --delete --exclude .git website/ ../myhomeschoolscribe.com/
 ```
 
 then `git add -A && git commit -m "Update site" && git push` inside that clone.
