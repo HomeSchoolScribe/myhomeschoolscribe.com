@@ -24,8 +24,15 @@ The site is served from the public repository `homeschoolscribe/myhomeschoolscri
 From a terminal, with that repository cloned next to this one:
 
 ```bash
-rsync -av --delete --exclude .git website/ ../myhomeschoolscribe.com/
+rsync -av --delete --exclude .git --exclude .DS_Store \
+      --exclude 'assets/social/packets/' website/ ../myhomeschoolscribe.com/
 ```
+
+**Keep the `assets/social/packets/` exclusion.** Daily social packets are copied straight into the
+live repository and deliberately never live in this folder (see
+`design/13-AppStore-Marketing/social/packets/*/README.md`). Without the exclusion, `--delete` removes
+every packet already published, breaking any post that links to one. This was found on 10 September
+2026, one dry run before it happened.
 
 then `git add -A && git commit -m "Update site" && git push` inside that clone.
 
