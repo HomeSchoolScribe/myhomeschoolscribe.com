@@ -123,6 +123,7 @@ section + section { border-top:1px solid var(--rule); }
 .step { background:var(--paper-2); border:1px solid var(--rule); border-radius:14px; padding:1.3rem 1.3rem 1.5rem; display:flex; flex-direction:column; gap:0.6rem; }
 .step .n { font-family:var(--mono); font-size:0.74rem; letter-spacing:0.12em; color:var(--ink-3); text-transform:uppercase; }
 .step .n::before { counter-increment:step; content:"Step " counter(step); }
+.steps.plain .n { display:none; }
 .step p { margin:0; color:var(--ink-2); font-size:1rem; }
 .step img { border-radius:12px; border:1px solid var(--rule); margin-top:0.5rem; }
 .tally { list-style:none; padding:0; margin:1.2rem 0 0; display:grid; gap:0.55rem; }
