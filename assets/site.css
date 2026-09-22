@@ -69,29 +69,31 @@ hr { border:0; border-top:1px solid var(--rule); margin:2.5rem 0; }
 .nav a { color:var(--ink-2); text-decoration:none; padding:0.3rem 0; border-bottom:2px solid transparent; }
 .nav a:hover, .nav a[aria-current="page"] { color:var(--ink); border-bottom-color:var(--slate); }
 @media (max-width: 640px) { .nav { gap:0.9rem; font-size:0.9rem; } .nav .optional { display:none; } }
+@media (max-width: 430px) { .brand { font-size:0.95rem; white-space:nowrap; } .nav { gap:0.7rem; font-size:0.85rem; } }
 
 /* Masthead */
 .masthead { padding:3.2rem 0 3rem; }
 .masthead .wrap { display:grid; grid-template-columns:minmax(0, 1.15fr) minmax(0, 0.85fr); gap:2.5rem; align-items:center; }
 @media (max-width: 860px) { .masthead .wrap { grid-template-columns:1fr; } }
-.masthead h1 { color:var(--chalk); margin-top:1.2rem; }
+.masthead h1 { color:var(--chalk); margin-top:0; }
 .masthead .lede { color:rgba(247,245,240,0.86); font-size:1.15rem; margin:1rem 0 1.5rem; max-width:52ch; }
-.intro { position:relative; height:clamp(110px, 16vw, 150px); }
-.intro .lockup { position:absolute; inset:0; display:flex; align-items:flex-end; opacity:0; transition:opacity 0.75s ease; }
+/* The intro clips its own bottom edge: the dropping letters fall off the board instead of onto the headline. */
+.intro { position:relative; height:clamp(110px, 16vw, 150px); padding-bottom:2.2rem; overflow:hidden; }
+.intro .lockup { position:absolute; inset:0 0 2.2rem; display:flex; align-items:flex-end; opacity:0; }
 .intro .lockup img, .intro .lockup svg { height:100%; width:auto; }
-.intro .word { position:absolute; left:0; bottom:0; font-family:var(--serif); font-weight:700; font-size:clamp(2.4rem, 6.4vw, 3.6rem); letter-spacing:-0.012em; line-height:1; color:var(--chalk); white-space:nowrap; display:flex; }
+.intro .word { position:absolute; left:0; bottom:2.2rem; font-family:var(--serif); font-weight:700; font-size:clamp(2.4rem, 6.4vw, 3.6rem); letter-spacing:-0.012em; line-height:1; color:var(--chalk); white-space:nowrap; display:flex; }
 .intro .word .l { opacity:0; display:inline-block; }
 .intro .word .tail { position:relative; display:inline-block; }
 .intro .word .tail .ribe { position:absolute; left:0; top:0; color:var(--wood); opacity:0; transform:translateY(-80px); white-space:nowrap; }
-.intro.done .lockup { opacity:1; }
-.intro.done .word { opacity:0; transition:opacity 0.75s ease; }
+.intro.done .lockup { opacity:1; transition:opacity 0.6s ease 0.2s; }
+.intro.done .word { opacity:0; transition:opacity 0.25s ease; }
 @keyframes write { to { opacity:1; } }
-@keyframes drop { to { opacity:0; transform:translateY(90px) rotate(8deg); } }
+@keyframes drop { 60% { opacity:0.5; } to { opacity:0; transform:translateY(70px) rotate(8deg); } }
 @keyframes arrive { 0% { opacity:0; transform:translateY(-80px); } 60% { opacity:1; transform:translateY(6px); } 80% { transform:translateY(-3px); } 100% { opacity:1; transform:translateY(0); } }
 .intro.play .word .l { animation:write 0.18s ease forwards; }
 .intro.play .word .hool .l { animation:write 0.18s ease forwards, drop 0.4s cubic-bezier(0.5,0,0.9,0.4) 1.25s forwards; }
 .intro.play .word .ribe { animation:arrive 0.45s cubic-bezier(0.34,1.2,0.64,1) 1.5s forwards; }
-.replay { position:absolute; right:0; bottom:-1.6rem; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(247,245,240,0.55); background:none; border:0; cursor:pointer; padding:0.2rem 0; }
+.replay { position:absolute; right:0; bottom:0.55rem; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(247,245,240,0.55); background:none; border:0; cursor:pointer; padding:0.2rem 0; }
 .replay:hover { color:var(--chalk); }
 @media (prefers-reduced-motion: reduce) {
   .intro .word { display:none; }
