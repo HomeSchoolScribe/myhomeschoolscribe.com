@@ -25,8 +25,16 @@ From a terminal, with that repository cloned next to this one:
 
 ```bash
 rsync -av --delete --exclude .git --exclude .DS_Store \
-      --exclude 'assets/social/packets/' website/ ../myhomeschoolscribe.com/
+      --exclude 'assets/social/packets/' --exclude 'beta-tutorials/' \
+      website/ ../myhomeschoolscribe.com/
 ```
+
+**Keep the `beta-tutorials/` exclusion too.** The unlisted owner-review page for the beta companion
+videos — 315 MB of MP4s and posters — is copied straight into the live repository on purpose and
+deliberately never lives in this folder: video that size has no business in the app repo's source
+tree or in every clone of it. Without the exclusion, `--delete` removes the whole page and every
+video in it. Added 24 September 2026, the day it was published; it stays up until the January launch.
+It is reachable only by its URL, carries `noindex,nofollow`, and is in no menu and no sitemap.
 
 **Keep the `assets/social/packets/` exclusion.** Daily social packets are copied straight into the
 live repository and deliberately never live in this folder (see
