@@ -77,27 +77,19 @@ hr { border:0; border-top:1px solid var(--rule); margin:2.5rem 0; }
 @media (max-width: 860px) { .masthead .wrap { grid-template-columns:1fr; } }
 .masthead h1 { color:var(--chalk); margin-top:0; }
 .masthead .lede { color:rgba(247,245,240,0.86); font-size:1.15rem; margin:1rem 0 1.5rem; max-width:52ch; }
-/* The intro clips its own bottom edge: the dropping letters fall off the board instead of onto the headline. */
+/* The logo intro (LOCKS #22): an SVG drawn by /assets/logo-intro.js on a transparent ground, so the board shows
+   through in both themes. The lockup image underneath is the fallback (no script, reduced motion) and the resting frame. */
 .intro { position:relative; height:clamp(110px, 16vw, 150px); padding-bottom:2.2rem; overflow:hidden; }
 .intro .lockup { position:absolute; inset:0 0 2.2rem; display:flex; align-items:flex-end; opacity:0; }
 .intro .lockup img, .intro .lockup svg { height:100%; width:auto; }
-.intro .word { position:absolute; left:0; bottom:2.2rem; font-family:var(--serif); font-weight:700; font-size:clamp(2.4rem, 6.4vw, 3.6rem); letter-spacing:-0.012em; line-height:1; color:var(--chalk); white-space:nowrap; display:flex; }
-.intro .word .l { opacity:0; display:inline-block; }
-.intro .word .tail { position:relative; display:inline-block; }
-.intro .word .tail .ribe { position:absolute; left:0; top:0; color:var(--wood); opacity:0; transform:translateY(-80px); white-space:nowrap; }
-.intro.done .lockup { opacity:1; transition:opacity 0.6s ease 0.2s; }
-.intro.done .word { opacity:0; transition:opacity 0.25s ease; }
-@keyframes write { to { opacity:1; } }
-@keyframes drop { 60% { opacity:0.5; } to { opacity:0; transform:translateY(70px) rotate(8deg); } }
-@keyframes arrive { 0% { opacity:0; transform:translateY(-80px); } 60% { opacity:1; transform:translateY(6px); } 80% { transform:translateY(-3px); } 100% { opacity:1; transform:translateY(0); } }
-.intro.play .word .l { animation:write 0.18s ease forwards; }
-.intro.play .word .hool .l { animation:write 0.18s ease forwards, drop 0.4s cubic-bezier(0.5,0,0.9,0.4) 1.25s forwards; }
-.intro.play .word .ribe { animation:arrive 0.45s cubic-bezier(0.34,1.2,0.64,1) 1.5s forwards; }
+.intro .lockup.anim { opacity:1; }
+.intro.done .lockup { opacity:1; }
+.intro.done .lockup.anim { display:none; }
 .replay { position:absolute; right:0; bottom:0.55rem; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(247,245,240,0.55); background:none; border:0; cursor:pointer; padding:0.2rem 0; }
 .replay:hover { color:var(--chalk); }
 @media (prefers-reduced-motion: reduce) {
-  .intro .word { display:none; }
-  .intro .lockup { opacity:1; transition:none; }
+  .intro .lockup.anim { display:none; }
+  .intro .lockup { opacity:1; }
   .replay { display:none; }
 }
 .cta { display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center; }
