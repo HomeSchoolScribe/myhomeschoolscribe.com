@@ -82,6 +82,9 @@ hr { border:0; border-top:1px solid var(--rule); margin:2.5rem 0; }
 .intro { position:relative; height:clamp(110px, 16vw, 150px); padding-bottom:2.2rem; overflow:hidden; }
 .intro .lockup { position:absolute; inset:0 0 2.2rem; display:flex; align-items:flex-end; opacity:0; }
 .intro .lockup img, .intro .lockup svg { height:100%; width:auto; }
+.intro .lockup picture { display:block; height:100%; }
+/* Wide screens get the horizontal lockup (06-lockup-horizontal-dark), sized so its letters match the stacked one's. */
+@media (min-width: 861px) { .intro { height:clamp(84px, 8vw, 104px); } }
 .intro .lockup.anim { opacity:1; }
 .intro.done .lockup { opacity:1; }
 .intro.done .lockup.anim { display:none; }

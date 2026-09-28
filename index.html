@@ -22,6 +22,11 @@
 <meta name="p:domain_verify" content="01aed3c2afd3f5c467194a78cc413408"/>
 <meta name="google-site-verification" content="uyakyGaXcTMdCrQNfzRR2PB7ibszg_JJ2bjnA3vRAR0" />
 <link rel="stylesheet" href="/assets/site.css">
+<script src="https://cdn.amplitude.com/script/eb0a17ef853d1570df33b3ece8c77520.js"></script>
+<script>
+  window.amplitude.init("eb0a17ef853d1570df33b3ece8c77520", { autocapture: true, fetchRemoteConfig: true });
+  window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.myhomeschoolscribe.com/#org", "name": "HomeSchool Scribe", "url": "https://www.myhomeschoolscribe.com/", "logo": "https://www.myhomeschoolscribe.com/assets/img/app-icon-512.png", "email": "support@myhomeschoolscribe.com", "address": {"@type": "PostalAddress", "addressLocality": "Villa Rica", "addressRegion": "GA", "addressCountry": "US"}, "sameAs": ["https://www.facebook.com/homeschoolscribe/", "https://www.instagram.com/homeschoolscribe/", "https://www.pinterest.com/homeschoolscribe/", "https://www.youtube.com/@homeschoolscribe", "https://www.tiktok.com/@homeschoolscribe", "https://x.com/homeschoolscrib"]}, {"@type": "WebSite", "@id": "https://www.myhomeschoolscribe.com/#website", "url": "https://www.myhomeschoolscribe.com/", "name": "HomeSchool Scribe", "publisher": {"@id": "https://www.myhomeschoolscribe.com/#org"}}, {"@type": "SoftwareApplication", "name": "HomeSchool Scribe", "operatingSystem": "iOS 26 or later, iPadOS 26 or later", "applicationCategory": "EducationalApplication", "description": "A homeschool planner and record keeper for iPhone and iPad. Check off the day; attendance, hours, grades, transcripts, and your state's paperwork write themselves.", "url": "https://www.myhomeschoolscribe.com/", "image": "https://www.myhomeschoolscribe.com/assets/img/app-icon-512.png", "author": {"@id": "https://www.myhomeschoolscribe.com/#org"}, "releaseNotes": "Coming to the App Store in January 2027.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free download; Scribe Plus subscription from $7.99 a month, $49.99 a year, or $149.99 once."}}]}</script>
 </head>
 <body><header class="site-header">
@@ -42,7 +47,7 @@
     <div>
       <p class="eyebrow">Homeschool planner · iPhone and iPad</p>
       <div class="intro" id="intro">
-        <div class="lockup"><img src="/assets/img/homeschoolscribe-lockup-stacked-reversed.svg" alt="HomeSchool Scribe" width="342" height="219"></div>
+        <div class="lockup"><picture><source media="(min-width: 861px)" srcset="/assets/img/homeschoolscribe-lockup-horizontal-reversed.svg" width="400" height="100"><img src="/assets/img/homeschoolscribe-lockup-stacked-reversed.svg" alt="HomeSchool Scribe" width="342" height="219"></picture></div>
         <div class="lockup anim" aria-hidden="true"><svg id="intro-svg" viewBox="0 0 342 219" width="342" height="219"></svg></div>
         <button class="replay" type="button" id="replay" hidden>Play again</button>
       </div>
@@ -208,7 +213,7 @@
     <div>
       <p class="eyebrow">Privacy</p>
       <h2>Your family's records stay in your iCloud.</h2>
-      <p>HomeSchool Scribe has no accounts and no servers. Your records sync between your devices through your own iCloud account, and the app collects nothing about you: no analytics, no ads, no third-party code. Student Mode collects nothing about your children.</p>
+      <p>HomeSchool Scribe has no accounts and no servers. Your records sync between your devices through your own iCloud account, and the app never sends your records to us. It counts anonymous usage, never names or your children's information, and shows no ads. Student Mode collects nothing about your children.</p>
       <p>Progress summaries are drafted on your iPhone from the report card's own numbers, and you edit them before they print; nothing is sent anywhere. Your copies are ordinary files in Files, not a format only this app can open.</p>
       <p><a href="/privacy.html">Read the privacy policy</a></p>
     </div>
@@ -243,6 +248,10 @@
 </footer>
 <script src="/assets/logo-intro.js"></script>
 <script>
+  // The one explicit event (FIX-LIST row 136c): a load-time event on the home page. Autocapture
+  // covers generic interactions; nothing else is instrumented by hand.
+  window.amplitude?.track("Viewed Home Page", { prompt_version: "BA400.4" });
+
   const reqs = {
     "Georgia": "<b>Georgia.</b> Declaration of Intent online within 30 days of starting and by September 1 each year. 180 days at 4.5 hours. Annual written progress assessment kept three years. A standardized test every three years from grade 3. HomeSchool Scribe reminds you on August 18, prepares the DOI worksheet, and stores your confirmation code.",
     "New York": "<b>New York.</b> Letter of intent by July 1, IHIP by August 15, four quarterly reports on your IHIP dates, an annual assessment filed with the fourth quarterly report; 900 hours in grades 1–6 and 990 in grades 7–12, over 180 days. HomeSchool Scribe drafts the IHIP from your courses and builds each quarterly report from the hours and grades you already logged.",
@@ -268,7 +277,9 @@
   function play() {
     intro.classList.remove("done");
     replay.hidden = true;
-    window.HSSLogoIntro.play(document.getElementById("intro-svg"), () => { intro.classList.add("done"); replay.hidden = false; });
+    // the horizontal lockup where the masthead has two columns, the stacked one on phones
+    const lockup = window.matchMedia("(min-width: 861px)").matches ? "h" : "stacked";
+    window.HSSLogoIntro.play(document.getElementById("intro-svg"), () => { intro.classList.add("done"); replay.hidden = false; }, lockup);
   }
   if (reduce || !window.HSSLogoIntro) { intro.classList.add("done"); } else { play(); replay.addEventListener("click", play); }
 </script>
