@@ -12,6 +12,7 @@
   --paper:#F6F2EA; --paper-2:#FFFFFF; --rule:#DDD5C6; --ink:#1E2A33; --ink-2:#4B5A66; --ink-3:#6E7B86;
   --slate:#2E6B9E; --slate-ink:#F7F5F0; --slate-soft:#E3EDF5; --chalk:#F7F5F0; --board:#1E2823; --board-2:#26312B;
   --wood:#B98A5A; --wood-edge:#8C6239; --focus:#2E6B9E; --success:#2F6B4A;
+  --brand-2:#2E6B9E;  /* the accent on the word Scribe: slate on paper, wood on the board */
   --serif:"Bitter", Georgia, "Times New Roman", serif;
   --sans:"Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   --mono:"IBM Plex Mono", Menlo, Consolas, monospace;
@@ -22,11 +23,13 @@
   :root:not([data-theme="light"]) {
     --paper:#171F1B; --paper-2:#1E2823; --rule:#34423B; --ink:#EFEBE2; --ink-2:#B9B3A6; --ink-3:#8F9A93;
     --slate:#8FBDE3; --slate-ink:#0F1512; --slate-soft:#24333F; --board:#0F1512; --board-2:#161D18; --focus:#8FBDE3; --success:#7FC49A;
+    --brand-2:#B98A5A;  /* reversed treatment: chalk + wood, never slate */
   }
 }
 :root[data-theme="dark"] {
   --paper:#171F1B; --paper-2:#1E2823; --rule:#34423B; --ink:#EFEBE2; --ink-2:#B9B3A6; --ink-3:#8F9A93;
   --slate:#8FBDE3; --slate-ink:#0F1512; --slate-soft:#24333F; --board:#0F1512; --board-2:#161D18; --focus:#8FBDE3; --success:#7FC49A;
+    --brand-2:#B98A5A;  /* reversed treatment: chalk + wood, never slate */
 }
 
 * { box-sizing: border-box; }
@@ -64,7 +67,7 @@ hr { border:0; border-top:1px solid var(--rule); margin:2.5rem 0; }
 .site-header .wrap { display:flex; align-items:center; justify-content:space-between; gap:1rem; height:60px; }
 .brand { display:flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--ink); font-family:var(--serif); font-weight:700; font-size:1.05rem; letter-spacing:-0.012em; }
 .brand svg { width:28px; height:28px; flex:none; }
-.brand .b2 { color:var(--slate); }
+.brand .b2 { color:var(--brand-2); }
 .nav { display:flex; gap:1.3rem; font-size:0.98rem; }
 .nav a { color:var(--ink-2); text-decoration:none; padding:0.3rem 0; border-bottom:2px solid transparent; }
 .nav a:hover, .nav a[aria-current="page"] { color:var(--ink); border-bottom-color:var(--slate); }
@@ -79,12 +82,15 @@ hr { border:0; border-top:1px solid var(--rule); margin:2.5rem 0; }
 .masthead .lede { color:rgba(247,245,240,0.86); font-size:1.15rem; margin:1rem 0 1.5rem; max-width:52ch; }
 /* The logo intro (LOCKS #22): an SVG drawn by /assets/logo-intro.js on a transparent ground, so the board shows
    through in both themes. The lockup image underneath is the fallback (no script, reduced motion) and the resting frame. */
-.intro { position:relative; height:clamp(110px, 16vw, 150px); padding-bottom:2.2rem; overflow:hidden; }
+.intro { position:relative; height:110px; padding-bottom:2.2rem; overflow:hidden; }
 .intro .lockup { position:absolute; inset:0 0 2.2rem; display:flex; align-items:flex-end; opacity:0; }
-.intro .lockup img, .intro .lockup svg { height:100%; width:auto; }
-.intro .lockup picture { display:block; height:100%; }
-/* Wide screens get the horizontal lockup (06-lockup-horizontal-dark), sized so its letters match the stacked one's. */
-@media (min-width: 861px) { .intro { height:clamp(84px, 8vw, 104px); } }
+.intro .lockup img, .intro .lockup svg { height:100%; width:auto; max-width:100%; }
+.intro .lockup img { object-fit:contain; object-position:left bottom; }
+/* The horizontal lockup (06-lockup-horizontal-dark) at every width, Josh 29 Sep 2026. It used to
+   switch to the stacked one below 861px, which on a phone put a tall block of logo directly above
+   the headline. One asset at one height also means no size jump at the breakpoint. 110px of intro
+   less the 2.2rem replay strip leaves the lockup 75px tall, 299px wide: inside the 342px the hero
+   gives it on a 390px phone, and max-width:100% keeps it inside a 320px one. */
 .intro .lockup.anim { opacity:1; }
 .intro.done .lockup { opacity:1; }
 .intro.done .lockup.anim { display:none; }
