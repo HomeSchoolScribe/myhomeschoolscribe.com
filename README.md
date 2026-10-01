@@ -26,8 +26,15 @@ From a terminal, with that repository cloned next to this one:
 ```bash
 rsync -av --delete --exclude .git --exclude .DS_Store \
       --exclude 'assets/social/packets/' --exclude 'beta-tutorials/' \
+      --exclude 'beta-add/' \
       website/ ../myhomeschoolscribe.com/
 ```
+
+**Keep the `beta-add/` exclusion.** The unlisted internal page that posts the original
+Mailchimp beta signup lives only in the live repository, so invited testers can be moved from
+Pending to Subscribed without using the launch form. It deliberately never lives in this folder.
+Without the exclusion, `--delete` removes it on the next publish. It is reachable only by its URL,
+carries `noindex,nofollow`, is disallowed in `robots.txt`, and is in no menu and no sitemap.
 
 **Keep the `beta-tutorials/` exclusion too.** The unlisted owner-review page for the beta companion
 videos — 315 MB of MP4s and posters — is copied straight into the live repository on purpose and
