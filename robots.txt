@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: /beta-add
 Allow: /
 Sitemap: https://www.myhomeschoolscribe.com/sitemap.xml
