@@ -31,7 +31,7 @@
 </head>
 <body><header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="HomeSchool Scribe home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" aria-hidden="true"><rect x="5.00" y="9.00" width="90.00" height="82.00" rx="15.00" fill="#B98A5A"/><rect x="5.00" y="9.00" width="90.00" height="82.00" rx="15.00" fill="none" stroke="#8C6239" stroke-width="1.40"/><rect x="11.50" y="15.50" width="77.00" height="69.00" rx="9.00" fill="#1E2823"/><g stroke="#F7F5F0" stroke-width="3.50" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="17.00" y1="67.00" x2="83.00" y2="67.00"/></g><g stroke="#F7F5F0" stroke-width="7.00" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="30.00" y1="32.00" x2="28.00" y2="67.00"/><line x1="42.00" y1="32.00" x2="44.00" y2="67.00"/><line x1="58.00" y1="32.00" x2="56.00" y2="67.00"/><line x1="70.00" y1="32.00" x2="72.00" y2="67.00"/><line x1="23.00" y1="62.00" x2="77.00" y2="38.00"/></g></svg></a>
+    <a class="brand" href="/" aria-label="HomeSchool Scribe home"><img class="logo logo-light" src="/assets/img/05-lockup-horizontal-light.svg" alt="HomeSchool Scribe" width="160" height="40"><img class="logo logo-dark" src="/assets/img/06-lockup-horizontal-dark.svg" alt="" aria-hidden="true" width="160" height="40"></a>
     <nav class="nav" aria-label="Site">
       <a href="/#how" class="optional">How it works</a>
       <a href="/states/" class="optional">Your state</a>
@@ -46,10 +46,8 @@
   <div class="wrap">
     <div>
       <p class="eyebrow">Homeschool planner · iPhone and iPad</p>
-      <div class="intro" id="intro">
-        <div class="lockup"><img src="/assets/img/homeschoolscribe-lockup-horizontal-reversed.svg" alt="HomeSchool Scribe" width="400" height="100"></div>
-        <div class="lockup anim" aria-hidden="true"><svg id="intro-svg" viewBox="0 0 400 100" width="400" height="100" preserveAspectRatio="xMinYMax meet"></svg></div>
-        <button class="replay" type="button" id="replay" hidden>Play again</button>
+      <div class="intro fade" id="intro">
+        <div class="lockup"><img src="/assets/img/06-lockup-horizontal-dark.svg" alt="HomeSchool Scribe" width="400" height="100"></div>
       </div>
       <h1>More wonder.<br>Less paperwork.</h1>
       <p class="lede">Attendance, hours, grades, transcripts, portfolio, and your state's paperwork, kept for you in your own iCloud. No accounts, no servers, nothing to keep up with but the lessons.</p>
@@ -108,13 +106,80 @@
       <p>Every document a homeschool gets asked for, drawn from the same check marks. Print any of them the day someone asks.</p>
       <ul class="tally">
         <li><span><strong>Attendance and hours.</strong> Days, hours, monthly totals, and a signed certification page.</span></li>
-        <li><span><strong>Report cards and transcripts.</strong> Weighted and unweighted GPA, credits, course of study, test scores.</span></li>
+        <li><span><strong>Report cards and transcripts.</strong> Report cards your way: points, weighted categories, pass/fail, or narrative. The high school transcript has a section of its own, <a href="#transcript">right below</a>.</span></li>
         <li><span><strong>Portfolio.</strong> Photos of work filed by student, course, and date, printed with their captions.</span></li>
         <li><span><strong>State filings.</strong> Notice letters, progress assessments, and the documents each filing asks for, assembled from your records.</span></li>
         <li><span><strong>Your own copies, kept for you.</strong> Photos, every report you generate, and a dated backup land in Files as ordinary files, every time you open the app. Point them at iCloud Drive if you like.</span></li>
       </ul>
     </div>
     <div class="phone flat"><img src="/assets/img/shot-05-records.png" alt="A report card as it prints: courses with grades, attendance, and a progress summary written under the grades" width="720" height="1215" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="transcript">
+  <div class="wrap">
+    <div class="band">
+      <div class="phone"><img src="/assets/img/shot-11-transcript.png" alt="A high school transcript as it prints: Maple Lane Academy, Ethan Hale, weighted and unweighted GPA, credits earned and an ACT score at the top, then each school year's courses with level, credits, grade and points" width="720" height="1154" loading="lazy"></div>
+      <div>
+        <p class="eyebrow">High school transcript</p>
+        <h2>Four years of high school, kept as you go.</h2>
+        <p>Every high-school course you grade feeds the transcript. By the time someone asks for it, it's already written: no rebuilding high school from a shoebox in senior year.</p>
+        <ul class="tally">
+          <li><span><strong>Every high-school year.</strong> One section per school year, each with a year summary.</span></li>
+          <li><span><strong>Courses and grades.</strong> High-school courses are graded, by you, and every one feeds the transcript.</span></li>
+          <li><span><strong>Credits.</strong> On every course, and on the transcript.</span></li>
+          <li><span><strong>Weighted and unweighted GPA.</strong> Both, on the same page.</span></li>
+          <li><span><strong>Test scores and activities.</strong> They print with the courses.</span></li>
+          <li><span><strong>Years before the app.</strong> They go in as finished courses, one line each: name, level, credits, a letter grade.</span></li>
+          <li><span><strong>A PDF, the day they ask.</strong> And a copy of every report you generate is kept in Files.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-head transcript-sources">
+      <p class="eyebrow">Where it comes from</p>
+      <h2>Nothing typed twice.</h2>
+    </div>
+    <div class="steps four">
+      <article class="step">
+        <span class="n"></span>
+        <h3>The course knows its credits</h3>
+        <p>Each high-school course carries its credits, and they print on the transcript.</p>
+        <img src="/assets/img/shot-12-course-credits.png" alt="Editing the AP English Literature course: subject Language Arts, graded by points, and under Transcript, Level AP and Credits 1.0, with Show on transcript switched on" width="720" height="1342" loading="lazy">
+      </article>
+      <article class="step">
+        <span class="n"></span>
+        <h3>You put the grade in</h3>
+        <p>Check off a lesson and graded work waits on Your desk. Any grade you enter updates the course.</p>
+        <img src="/assets/img/shot-13-your-desk-grade.png" alt="Your desk, Needs a grade: unit tests for each child, and a 98 out of 100 being typed for Ethan's Great Gatsby final essay" width="720" height="1154" loading="lazy">
+      </article>
+      <article class="step">
+        <span class="n"></span>
+        <h3>Scores and activities, on the page</h3>
+        <p>Test scores and activities print with the courses, as a PDF.</p>
+        <img src="/assets/img/shot-14-transcript-scores.png" alt="The transcript's 12th-grade courses, then test scores (PSAT/NMSQT, two SATs and the ACT, with dates) and activities, with type and years" width="720" height="707" loading="lazy">
+      </article>
+      <article class="step">
+        <span class="n"></span>
+        <h3>Years before the app, too</h3>
+        <p>They go in as finished courses: name, level, credits, a letter grade.</p>
+        <img src="/assets/img/shot-15-finished-course.png" alt="Adding a finished course from a past year: 2023–2024, 9th grade, Earth Science, Science, Honors, 1.0 credit, final grade B" width="720" height="1154" loading="lazy">
+      </article>
+    </div>
+<div class="film" id="transcript-film">
+  <div class="section-head">
+    <p class="eyebrow">Watch</p>
+    <h2>Four years, one record.</h2>
+    <p id="transcript-film-caption">A short film about one homeschool family's high school years.</p>
+  </div>
+  <div class="film-frame">
+    <video controls preload="none" playsinline width="1920" height="1080"
+           poster="https://video.myhomeschoolscribe.com/site/2026-10/HSS_Film_TheTwoOfThem_FINAL_poster.jpg"
+           aria-label="A short film about one homeschool family's high school years."
+           aria-describedby="transcript-film-caption">
+      <source src="https://video.myhomeschoolscribe.com/site/2026-10/HSS_Film_TheTwoOfThem_FINAL_web.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
   </div>
 </section>
 
@@ -227,7 +292,7 @@
 </main>
 <footer class="site-footer board rail-top">
   <div class="wrap">
-    <img class="wordmark" src="/assets/img/homeschoolscribe-wordmark-oneline-chalk.svg" alt="HomeSchool Scribe" width="380" height="40">
+    <img class="wordmark" src="/assets/img/14-wordmark-oneline-dark.svg" alt="HomeSchool Scribe" width="380" height="40">
     <div class="links">
       <a href="/privacy.html">Privacy policy</a>
       <a href="/help.html">Help center</a>
@@ -244,43 +309,5 @@
     <p class="fine">&copy; 2026 HomeSchool Scribe. HomeSchool Scribe and the tally mark are our trademarks. Made in Villa Rica, Georgia. HomeSchool Scribe is not legal advice; confirm requirements with your state.</p>
   </div>
 </footer>
-<script src="/assets/logo-intro.js"></script>
-<script>
-  // The one explicit event (FIX-LIST row 136c): a load-time event on the home page. Autocapture
-  // covers generic interactions; nothing else is instrumented by hand.
-  window.amplitude?.track("Viewed Home Page", { prompt_version: "BA400.4" });
-
-  const reqs = {
-    "Georgia": "<b>Georgia.</b> Declaration of Intent online within 30 days of starting and by September 1 each year. 180 days at 4.5 hours. Annual written progress assessment kept three years. A standardized test every three years from grade 3. HomeSchool Scribe reminds you on August 18, prepares the DOI worksheet, and stores your confirmation code.",
-    "New York": "<b>New York.</b> Letter of intent by July 1, IHIP by August 15, four quarterly reports on your IHIP dates, an annual assessment filed with the fourth quarterly report; 900 hours in grades 1–6 and 990 in grades 7–12, over 180 days. HomeSchool Scribe drafts the IHIP from your courses and builds each quarterly report from the hours and grades you already logged.",
-    "Pennsylvania": "<b>Pennsylvania.</b> Notarized affidavit by August 1 with objectives by subject; 180 days or 900/990 hours; a portfolio with a reading log by title and work samples; evaluator certification by June 30. HomeSchool Scribe prints the portfolio index and the objectives worksheet.",
-    "Florida": "<b>Florida.</b> Notice of intent within 30 days; a portfolio with a log of activities and materials kept two years; an annual evaluation by the anniversary of your notice. HomeSchool Scribe keeps the log as you check off lessons and reminds you a month before the anniversary.",
-    "North Carolina": "<b>North Carolina.</b> One-time notice of intent to DNPE; nine-month term; attendance and immunization records; an annual standardized test kept one year. HomeSchool Scribe prints the attendance register and reminds you to test.",
-    "Virginia": "<b>Virginia.</b> Notice of intent by August 15 with a curriculum description; evidence of progress by August 1. HomeSchool Scribe writes the curriculum description from your courses.",
-    "Ohio": "<b>Ohio.</b> Notify your superintendent by August 30 (or within five days of withdrawing); no hours or testing since 2023. HomeSchool Scribe prints the notification letter with the assurance language and reminds you to look for the acknowledgment within 14 days.",
-    "Texas": "<b>Texas.</b> Nothing to file. Keep a bona fide curriculum in reading, spelling, grammar, math, and good citizenship. HomeSchool Scribe keeps the records anyway, so a transcript is ready when a college asks."
-  };
-  const sel = document.getElementById("state-select");
-  const card = document.querySelector("#state-card p");
-  Object.keys(reqs).forEach(s => { const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o); });
-  const slug = s => s.toLowerCase().replace(/[^a-z]+/g, "-");
-  const show = () => { card.innerHTML = reqs[sel.value] + ' <a href="/states/' + slug(sel.value) + '.html">Read the ' + sel.value + ' guide</a>'; };
-  sel.addEventListener("change", show); show();
-
-  // The logo intro (LOCKS #22): the mark is drawn stroke by stroke, "HomeSchool" is written, "hool" drops,
-  // "ribe" lands in wood, and it settles into the lockup. Drawing lives in /assets/logo-intro.js.
-  const intro = document.getElementById("intro");
-  const replay = document.getElementById("replay");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function play() {
-    intro.classList.remove("done");
-    replay.hidden = true;
-    // the horizontal lockup at every width (Josh, 29 Sep 2026): the stacked one was only ever
-    // shown below 861px, and on a phone it framed badly against the headline
-    const lockup = "h";
-    window.HSSLogoIntro.play(document.getElementById("intro-svg"), () => { intro.classList.add("done"); replay.hidden = false; }, lockup);
-  }
-  if (reduce || !window.HSSLogoIntro) { intro.classList.add("done"); } else { play(); replay.addEventListener("click", play); }
-</script>
 </body>
 </html>
