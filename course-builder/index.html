@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Course Builder | HomeSchool Scribe</title>
+<meta name="description" content="Plan your homeschool week in your browser, then send it to HomeSchool Scribe as one file. Everything stays on your device.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1E2823">
+<!-- Hand-written on purpose: this page is not made by the site generator and loads no third-party
+     script or stylesheet. Everything runs in the browser; the only files it loads are its own. -->
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/course-builder/builder.css?v=20261007b">
+</head>
+<body><header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="HomeSchool Scribe home"><img class="logo logo-light" src="/assets/img/05-lockup-horizontal-light.svg" alt="HomeSchool Scribe" width="160" height="40"><img class="logo logo-dark" src="/assets/img/06-lockup-horizontal-dark.svg" alt="" aria-hidden="true" width="160" height="40"></a>
+    <nav class="nav" aria-label="Site">
+      <a href="/#how" class="optional">How it works</a>
+      <a href="/states/" class="optional">Your state</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/help.html">Help</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Subject icons: one small line icon per SubjectArea, named for the app's SF Symbol. -->
+<svg class="cb-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-text-book-closed" viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 8h6M9 11.5h6"/></symbol>
+  <symbol id="icon-function" viewBox="0 0 24 24"><path d="M14 4c-2 0-3 1-3.4 3L9 17c-.4 2-1.4 3-3.4 3"/><path d="M7 10h6"/><path d="M13 13l6 7M19 13l-6 7"/></symbol>
+  <symbol id="icon-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.4"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/></symbol>
+  <symbol id="icon-globe-americas" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 4.5l1.5 3 3 .5-1 2.5 2 2v3l-2 2.5-1.5-3-2.5-1-1-3.5L8 4.5z"/><path d="M15.5 14l1.5 1 .5 3"/></symbol>
+  <symbol id="icon-character-bubble" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M9 12.5l3-7 3 7M10 10.5h4"/></symbol>
+  <symbol id="icon-paintpalette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.6 0 2-1 1.6-2s-.4-2.2 1-2.4l2.4-.2c2.2-.2 4-1.6 4-4.4A9 9 0 0 0 12 3z"/><circle cx="8" cy="10" r="1.1"/><circle cx="12" cy="7.5" r="1.1"/><circle cx="16.5" cy="9.5" r="1.1"/><circle cx="7.5" cy="14.5" r="1.1"/></symbol>
+  <symbol id="icon-figure-run" viewBox="0 0 24 24"><circle cx="15" cy="4.5" r="1.8"/><path d="M9.5 8.5l4-1 2.5 3.5 3.5 1"/><path d="M13.5 7.5L11 12l3 3-1 5.5"/><path d="M11 12l-3.5 2L5 20"/><path d="M14 15l4 2"/></symbol>
+  <symbol id="icon-book" viewBox="0 0 24 24"><path d="M3 5.5C5.5 4.5 8.5 4.5 12 6.5c3.5-2 6.5-2 9-1v13c-2.5-1-5.5-1-9 1-3.5-2-6.5-2-9-1z"/><path d="M12 6.5v13"/></symbol>
+  <symbol id="icon-desktopcomputer" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M3 13h18"/><path d="M9.5 20h5M12 16v4"/></symbol>
+  <symbol id="icon-house" viewBox="0 0 24 24"><path d="M3.5 11.5L12 4l8.5 7.5"/><path d="M6 10v10h12V10"/><path d="M10 20v-5.5h4V20"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.5 4.2 1.2 6.1L12 17.3l-5.5 2.9 1.2-6.1-4.5-4.2 6.1-.8z"/></symbol>
+  <symbol id="icon-square-grid-2x2" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+</svg>
+
+<main class="cb" id="builder">
+  <div class="cb-privacy" role="note"><div class="wrap">Everything stays in this browser. Nothing is sent to us. <span class="cb-save-status" id="save-status" aria-live="polite"></span></div></div>
+
+  <div class="wrap cb-top">
+    <p class="eyebrow">Course Builder</p>
+    <button type="button" class="cb-link-btn cb-clear-draft" id="clear-draft" hidden>Clear draft</button>
+    <ol class="cb-steps" id="cb-steps" aria-label="Steps">
+      <li><button type="button" data-go="0">Start</button></li>
+      <li><button type="button" data-go="1">Who's learning</button></li>
+      <li><button type="button" data-go="2">Your week</button></li>
+      <li><button type="button" data-go="3">Lessons</button></li>
+      <li><button type="button" data-go="5">Preview</button></li>
+      <li><button type="button" data-go="6">Review your plan</button></li>
+    </ol>
+  </div>
+
+  <!-- Screen 0: Start -->
+  <section class="cb-screen cb-start board rail" id="screen-0" data-screen="0">
+    <div class="wrap">
+      <h1>Plan your week. Send it to HomeSchool Scribe.</h1>
+      <p class="cb-lede">Give each child a color lane, put courses on days, type in how many lessons or pages a book has and the lessons fill themselves in. Then download one file and open it in the app. Nothing you already have in the app changes.</p>
+      <div class="cta">
+        <button type="button" class="btn btn-chalk" id="start-week">Start my week.</button>
+      </div>
+      <div class="cta cb-start-more">
+        <button type="button" class="btn btn-outline" id="start-open">Open a file I made</button>
+        <input type="file" id="open-file-input" accept=".hssweek,.json,application/json,application/vnd.homeschoolscribe.week+json" hidden>
+        <button type="button" class="btn btn-outline" id="start-sample">Start from a sample week</button>
+      </div>
+      <label class="cb-private"><input type="checkbox" id="private-session"> Private session: save nothing on this device (for a shared computer)</label>
+      <p class="cb-open-note" id="open-note" hidden aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- Screen 1: Who's learning? -->
+  <section class="cb-screen" id="screen-1" data-screen="1" hidden>
+    <div class="wrap cb-narrow">
+      <h2>Who's learning?</h2>
+      <p class="muted">Each child gets a color lane. Pick a color and a grade.</p>
+      <div id="lanes-list" class="cb-lanes"></div>
+      <button type="button" class="btn btn-paper" id="add-lane">Add a child</button>
+
+      <fieldset class="cb-fieldset" id="school-year">
+        <legend>Which school year is this for?</legend>
+        <div class="cb-radio-row" id="school-year-options"></div>
+        <p class="small muted">The year names the file and helps the app pick the right year. No dates go in the file.</p>
+      </fieldset>
+
+      <div class="cb-actions">
+        <button type="button" class="btn btn-slate" id="lanes-next">Next</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 2: Your week (with the course panel, screen 3, beside it) -->
+  <section class="cb-screen" id="screen-2" data-screen="2" hidden>
+    <div class="wrap wide">
+      <div class="cb-week-head">
+        <div>
+          <h2>Your week</h2>
+          <p class="muted small" id="week-hint">Add a course in a lane, then drag it onto days or tap a shortcut. Tap a block to open it.</p>
+        </div>
+        <div class="cb-week-tools">
+          <button type="button" class="btn btn-paper small" id="toggle-weekend">Add weekend days</button>
+        </div>
+      </div>
+      <div class="cb-lane-tabs" id="lane-tabs" role="tablist" aria-label="Lanes"></div>
+      <div class="cb-week-layout">
+        <div class="cb-grid-wrap">
+          <div class="cb-grid" id="week-grid" aria-label="Week grid"></div>
+          <p class="cb-placing" id="placing-note" hidden aria-live="polite"></p>
+        </div>
+        <aside class="cb-panel" id="course-panel" hidden aria-label="Course"></aside>
+      </div>
+      <div class="cb-actions">
+        <button type="button" class="btn btn-paper" data-go="1">Back</button>
+        <button type="button" class="btn btn-slate" data-go="3">Next: lessons</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 3: Lessons (Josh, October 6, 2026: lessons are their own step, not a button in the course panel) -->
+  <section class="cb-screen" id="screen-3" data-screen="3" hidden>
+    <div class="wrap">
+      <h2>Lessons</h2>
+      <p class="muted">Each course needs its lessons. Add them here, or leave a course empty and plan it as you go in the app.</p>
+      <div id="lessons-list"></div>
+      <div class="cb-actions">
+        <button type="button" class="btn btn-paper" data-go="2">Back to the week</button>
+        <button type="button" class="btn btn-slate" data-go="5">Next: preview a day</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 4: Lesson workspace (opens over the Lessons step or the week) -->
+  <section class="cb-screen cb-workspace" id="screen-4" data-screen="4" hidden aria-label="Lessons">
+    <div class="wrap wide" id="workspace"></div>
+  </section>
+
+  <!-- Screen 5: Preview a day -->
+  <section class="cb-screen" id="screen-5" data-screen="5" hidden>
+    <div class="wrap">
+      <h2>Preview</h2>
+      <p class="muted">A day the way the app's Today screen lays it out. The app uses your own school days and away days.</p>
+      <div id="preview"></div>
+      <div class="cb-actions">
+        <button type="button" class="btn btn-paper" data-go="3">Back to lessons</button>
+        <button type="button" class="btn btn-slate" data-go="6">Review your plan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screen 6: Review your plan, the finish (2.0 #2, Josh 2:16 PM ET Oct 6) -->
+  <section class="cb-screen" id="screen-6" data-screen="6" hidden>
+    <div class="wrap">
+      <h2>Review your plan</h2>
+      <p class="muted">Your family's week, each child's day, every course through its last lesson, and the file that carries it all.</p>
+
+      <div class="cb-ready" id="ready">
+        <div class="cb-ready-main">
+          <p class="cb-ready-line" id="ready-line" aria-live="polite"></p>
+          <p class="small muted" id="download-name"></p>
+          <p class="cb-saved-line" id="review-saved"></p>
+        </div>
+        <div class="cb-ready-actions">
+          <button type="button" class="btn btn-slate" id="download">Download my week</button>
+        </div>
+      </div>
+      <div class="cb-card" id="open-in-app" hidden>
+        <h3>Now open it in the app</h3>
+        <ul class="tally">
+          <li data-step="airdrop"><span><strong>Get it to your iPhone or iPad:</strong> AirDrop <strong id="open-file-label">Our week</strong> from your Downloads folder, or save it to iCloud Drive, or text or email it to yourself.</span></li>
+          <li data-step="tap"><span><strong>Then tap the file</strong> in Files, Messages or Mail, and HomeSchool Scribe shows what it will add before it adds anything.</span></li>
+          <li data-step="inside"><span><strong>Or from inside the app:</strong> Courses, tap +, then <strong>From a Course Builder file...</strong> and pick the file.</span></li>
+          <li data-step="phone"><span><strong>Building this on the phone itself?</strong> Tap Safari's download arrow, tap the file, then Share, then HomeSchool Scribe.</span></li>
+        </ul>
+      </div>
+      <div class="cb-card cb-addonly">
+        <h3>What the app will do</h3>
+        <p id="addonly-line"></p>
+        <p class="small muted">The app shows what it will add before it adds anything. Nothing already in HomeSchool Scribe is changed or removed.</p>
+      </div>
+
+      <h3 class="cb-review-h">Before you download</h3>
+      <p class="muted" id="checks-summary"></p>
+      <ul class="cb-checks" id="checks-list" aria-live="polite"></ul>
+
+      <div id="review"></div>
+
+      <div class="cb-actions cb-finish-actions">
+        <button type="button" class="btn btn-paper" id="share-link">Share link</button>
+        <button type="button" class="btn btn-paper" id="coop-pack">Make a co-op pack</button>
+        <button type="button" class="btn btn-paper" id="fridge-sheet">Print for the fridge</button>
+        <button type="button" class="btn btn-paper" data-go="5">Back to the preview</button>
+      </div>
+      <div class="cb-card cb-share" id="share-box" hidden>
+        <h3>Share link</h3>
+        <p class="small">The link carries the shape of your week only: the days, the colors, the course names and how often they meet. No names, no lesson text, no notes. It lives inside the link itself; nothing is sent to us.</p>
+        <div class="cb-row">
+          <input type="text" id="share-url" readonly aria-label="Share link">
+          <button type="button" class="btn btn-slate small" id="share-copy">Copy</button>
+        </div>
+        <p class="hint" id="share-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="cb-dialog" id="coop-dialog" aria-labelledby="coop-title">
+    <h3 id="coop-title">Make a co-op pack</h3>
+    <p>A file holding only the co-op's courses. Each family opens it in HomeSchool Scribe and picks which child takes each color. Nothing else travels: no names, no other courses, nothing ongoing.</p>
+    <div class="cb-checks-inline" id="coop-courses"></div>
+    <p class="hint" id="coop-note"></p>
+    <div class="cb-actions" style="margin-top: 1rem">
+      <button type="button" class="btn btn-slate" id="coop-download">Download the pack</button>
+      <button type="button" class="btn btn-paper" id="coop-cancel">Cancel</button>
+    </div>
+  </dialog>
+
+  <dialog class="cb-dialog" id="restore-dialog" aria-labelledby="restore-title">
+    <h3 id="restore-title">You have a week in progress</h3>
+    <p id="restore-text"></p>
+    <p class="hint">It was saved in this browser only. The names you typed for each child were not saved; you can type them again.</p>
+    <div class="cb-actions" style="margin-top: 1rem">
+      <button type="button" class="btn btn-slate" id="restore-resume">Pick up where you left off</button>
+      <button type="button" class="btn btn-paper" id="restore-fresh">Start over</button>
+    </div>
+  </dialog>
+
+  <dialog class="cb-dialog" id="replace-dialog" aria-labelledby="replace-title">
+    <h3 id="replace-title">Replace the name</h3>
+    <p id="replace-text"></p>
+    <ul class="cb-replace-preview" id="replace-preview"></ul>
+    <div class="cb-actions" style="margin-top: 1rem">
+      <button type="button" class="btn btn-slate" id="replace-confirm">Replace</button>
+      <button type="button" class="btn btn-paper" id="replace-cancel">Cancel</button>
+    </div>
+  </dialog>
+
+  <dialog class="cb-dialog cb-chooser" id="sample-dialog" aria-labelledby="sample-title">
+    <h3 id="sample-title">Start from a sample week</h3>
+    <p class="muted small">A made-up week to look around with. The courses are generic and the lessons are yours to change or delete; nothing in it is a real family.</p>
+    <div class="cb-chooser-grid" id="sample-list"></div>
+    <div class="cb-actions" style="margin-top: 1rem">
+      <button type="button" class="btn btn-paper" id="sample-cancel">Cancel</button>
+    </div>
+  </dialog>
+
+  <dialog class="cb-dialog" id="no-lessons-dialog" aria-labelledby="no-lessons-title">
+    <h3 id="no-lessons-title">Some courses have no lessons yet</h3>
+    <p id="no-lessons-text"></p>
+    <div class="cb-actions" style="margin-top: 1rem">
+      <button type="button" class="btn btn-slate" id="no-lessons-add">Add lessons</button>
+      <button type="button" class="btn btn-paper" id="no-lessons-skip">Skip for now</button>
+    </div>
+  </dialog>
+
+  <noscript><div class="wrap"><p>The Course Builder needs JavaScript turned on. It still runs only in your browser.</p></div></noscript>
+</main>
+
+<!-- The printed fridge sheet sits beside <main>, not inside it: the print rule hides every other child of body. -->
+<section class="cb-print" id="fridge" aria-hidden="true"></section>
+
+<!-- The phone's bottom bar: Back, Step N of 6, Next. Hidden above 640 px. -->
+<div class="cb-phone-bar" id="phone-bar">
+  <button type="button" class="btn btn-paper" id="phone-back">Back</button>
+  <span class="cb-phone-step" id="phone-step">Step 1 of 6</span>
+  <button type="button" class="btn btn-slate" id="phone-next">Next</button>
+</div>
+
+<footer class="site-footer board rail-top">
+  <div class="wrap">
+    <img class="wordmark" src="/assets/img/14-wordmark-oneline-dark.svg" alt="HomeSchool Scribe" width="380" height="40">
+    <div class="links">
+      <a href="/privacy.html">Privacy policy</a>
+      <a href="/help.html">Help center</a>
+      <a href="/support.html">Support</a>
+      <a href="/terms.html">Terms of use</a>
+      <a href="mailto:support@myhomeschoolscribe.com">support@myhomeschoolscribe.com</a>
+      <a href="https://www.facebook.com/homeschoolscribe/" rel="me">Facebook</a>
+      <a href="https://www.instagram.com/homeschoolscribe/" rel="me">Instagram</a>
+      <a href="https://www.pinterest.com/homeschoolscribe/" rel="me">Pinterest</a>
+      <a href="https://www.youtube.com/@homeschoolscribe" rel="me">YouTube</a>
+      <a href="https://www.tiktok.com/@homeschoolscribe" rel="me">TikTok</a>
+      <a href="https://x.com/homeschoolscrib" rel="me">X</a>
+    </div>
+    <p class="fine">&copy; 2026 HomeSchool Scribe. HomeSchool Scribe and the tally mark are our trademarks. Made in Villa Rica, Georgia. HomeSchool Scribe is not legal advice; confirm requirements with your state.</p>
+  </div>
+</footer>
+<script type="module" src="/course-builder/builder.js?v=20261007b"></script>
+</body>
+</html>

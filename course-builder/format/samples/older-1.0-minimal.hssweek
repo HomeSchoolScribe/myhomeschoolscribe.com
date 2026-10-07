@@ -1,0 +1,78 @@
+{
+  "format": "homeschoolscribe.week",
+  "formatVersion": "1.0",
+  "fileId": "7d1e2f3a-4b5c-4d6e-9f80-1a2b3c4d5e6f",
+  "createdAt": "2026-10-05T19:00:00-04:00",
+  "updatedAt": "2026-10-05T19:00:00-04:00",
+  "madeWith": {
+    "tool": "Course Builder",
+    "version": "1.0.0"
+  },
+  "source": {
+    "kind": "blank"
+  },
+  "schoolYear": {
+    "startYear": 2026,
+    "label": "2026-27"
+  },
+  "week": {
+    "days": [
+      {
+        "day": "mon",
+        "on": true
+      },
+      {
+        "day": "tue",
+        "on": true
+      },
+      {
+        "day": "wed",
+        "on": true
+      },
+      {
+        "day": "thu",
+        "on": true
+      },
+      {
+        "day": "fri",
+        "on": true
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "laneId": "aaaa1111-2222-4333-8444-555566667777",
+      "color": "purple",
+      "colorHex": "6A3D8F",
+      "grade": 6
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "bbbb1111-2222-4333-8444-555566667777",
+      "laneIds": [
+        "aaaa1111-2222-4333-8444-555566667777"
+      ],
+      "name": "Science",
+      "subject": "Science",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "wed",
+        "fri"
+      ],
+      "minutes": 40,
+      "gradingMode": "Narrative, no grade",
+      "lessons": [
+        {
+          "lessonId": "cccc1111-2222-4333-8444-555566667777",
+          "title": "Lesson 1"
+        },
+        {
+          "lessonId": "dddd1111-2222-4333-8444-555566667777",
+          "title": "Lesson 2"
+        }
+      ]
+    }
+  ]
+}

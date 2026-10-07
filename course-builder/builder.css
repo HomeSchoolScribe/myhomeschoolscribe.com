@@ -1,0 +1,856 @@
+/* Course Builder. Sits on top of /assets/site.css and reuses its tokens (paper, ink, slate, board,
+   wood, chalk) and classes (wrap, btn, eyebrow, muted, small, board, rail, tally). Everything here
+   is prefixed cb- so nothing leaks into the rest of the site. Light and dark come from the site
+   tokens; lane tints are mixed from the lane's own hex. */
+
+.cb-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.cb { --cb-radius: 10px; --cb-gap: 0.75rem; }
+.cb button, .cb input, .cb select, .cb textarea { font: inherit; }
+.cb button { cursor: pointer; }
+.cb button:disabled { cursor: default; opacity: 0.55; }
+.cb .btn { cursor: pointer; }
+.cb .btn.small { font-size: 0.9rem; padding: 0.45rem 0.8rem; }
+.cb .wrap.wide { max-width: 1240px; }
+.cb-narrow { max-width: 720px; }
+.cb h2 { margin-bottom: 0.4rem; }
+.cb p { max-width: none; }
+
+/* The one line that is always there. */
+.cb-privacy { background: var(--slate-soft); color: var(--ink); font-size: 0.86rem; text-align: center; padding: 0.4rem 0; border-bottom: 1px solid var(--rule); position: sticky; top: 60px; z-index: 15; }
+
+/* Step bar */
+.cb-top { padding: 1.4rem 1.5rem 0; }
+.cb-top .eyebrow { margin-bottom: 0.4rem; }
+.cb-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 0.3rem; counter-reset: cbstep; max-width: none; }
+.cb-steps li { margin: 0; display: flex; align-items: center; }
+.cb-steps li + li::before { content: ""; width: 14px; height: 1px; background: var(--rule); margin: 0 0.3rem; }
+.cb-steps button { background: none; border: 0; color: var(--ink-3); font-size: 0.92rem; padding: 0.3rem 0.4rem; border-radius: 6px; border-bottom: 2px solid transparent; }
+.cb-steps button:hover { color: var(--ink); }
+.cb-steps button[aria-current="step"] { color: var(--ink); border-bottom-color: var(--slate); font-weight: 600; }
+.cb-steps button:disabled { opacity: 0.5; }
+
+/* Screens */
+.cb-screen { padding: 2rem 0 3rem; }
+.cb-screen[hidden] { display: none; }
+/* The site's .cta sets display:flex, which beats the hidden attribute (seen in Safari: the two v2
+   placeholder buttons showed on the start screen). Hidden means hidden, everywhere on this page. */
+.cb [hidden] { display: none !important; }
+.cb-start { padding: 3.5rem 0 4rem; margin-top: 1.2rem; }
+.cb-start h1 { color: var(--chalk); max-width: 20ch; }
+.cb-start .cb-lede { color: rgba(247, 245, 240, 0.86); font-size: 1.15rem; margin: 1rem 0 1.6rem; max-width: 56ch; }
+.cb-start .cta + .cta { margin-top: 1rem; }
+.cb-start .btn { cursor: pointer; }
+.cb-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; align-items: center; }
+.cb-fieldset { border: 1px solid var(--rule); border-radius: 12px; padding: 1rem 1.2rem 1.1rem; margin: 1.8rem 0 0; background: var(--paper-2); }
+.cb-fieldset legend { font-weight: 600; padding: 0 0.4rem; }
+.cb-fieldset p { margin: 0.6rem 0 0; }
+.cb-radio-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cb-radio-row label { display: inline-flex; align-items: center; gap: 0.45rem; margin: 0; padding: 0.5rem 0.9rem; border: 1.5px solid var(--rule); border-radius: 999px; font-weight: 500; cursor: pointer; min-height: 44px; }
+.cb-radio-row label:has(input:checked) { border-color: var(--slate); background: var(--slate-soft); }
+.cb-radio-row input { margin: 0; accent-color: var(--slate); }
+.cb label { font-weight: 600; margin-bottom: 0.3rem; font-size: 0.95rem; }
+.cb input[type="text"], .cb input[type="number"], .cb input[type="date"], .cb input[type="url"], .cb textarea, .cb select {
+  width: 100%; color: var(--ink); background: var(--paper-2); border: 1.5px solid var(--rule); border-radius: 8px; padding: 0.5rem 0.65rem; min-height: 44px; }
+.cb select { padding-right: 2.2rem; }
+.cb textarea { min-height: 5rem; resize: vertical; line-height: 1.45; }
+.cb input:focus-visible, .cb textarea:focus-visible, .cb select:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; border-color: var(--focus); }
+.cb .hint { font-size: 0.86rem; color: var(--ink-3); margin: 0.25rem 0 0; }
+.cb-card { background: var(--paper-2); border: 1px solid var(--rule); border-left: 4px solid var(--slate); border-radius: 12px; padding: 1.1rem 1.3rem; margin-top: 1.6rem; }
+.cb-card h3 { margin-bottom: 0.5rem; }
+.cb-card .tally { margin-top: 0.4rem; }
+.cb-card .tally li { margin-bottom: 0.3rem; }
+
+/* Screen 1: lanes */
+.cb-lanes { display: grid; gap: 0.75rem; margin: 1.2rem 0 1rem; }
+.cb-lane-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.3fr) auto; gap: 0.7rem; align-items: end; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 12px; padding: 0.9rem 1rem; }
+.cb-lane-row .cb-dot { width: 32px; height: 32px; border-radius: 50%; margin-bottom: 6px; border: 2px solid rgba(255, 255, 255, 0.6); box-shadow: 0 0 0 1px var(--rule); }
+.cb-lane-row .cb-field { min-width: 0; }
+.cb-lane-row .cb-field label { display: block; }
+/* The hint lives inside the name field, which is its own one-column grid; a column number here
+   squeezed the input into an implicit first column on desktop (seen in Chrome at 1449 px). */
+.cb-lane-row .hint { grid-column: 1 / -1; }
+.cb-link-btn { background: none; border: 0; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; padding: 0.6rem 0.4rem; min-height: 44px; border-radius: 6px; }
+.cb-link-btn:hover { color: var(--ink); }
+@media (max-width: 640px) {
+  .cb-lane-row { grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1fr); }
+  .cb-lane-row .cb-field.name { grid-column: 1 / -1; }
+  .cb-lane-row .hint { grid-column: 1 / -1; }
+  .cb-lane-row .cb-link-btn { grid-column: 1 / -1; justify-self: start; }
+}
+
+/* Screen 2: the week */
+.cb-week-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem 1.5rem; align-items: flex-end; margin-bottom: 1rem; }
+.cb-week-head p { margin: 0; }
+.cb-week-tools { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.cb-week-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+.cb-week-layout.has-panel { grid-template-columns: minmax(0, 1fr) 360px; }
+@media (max-width: 1000px) { .cb-week-layout.has-panel { grid-template-columns: minmax(0, 1fr); } }
+.cb-grid-wrap { min-width: 0; overflow-x: auto; }
+.cb-grid { display: grid; grid-template-columns: 180px repeat(var(--days, 5), minmax(120px, 1fr)); gap: 2px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; min-width: 640px; }
+.cb-corner, .cb-dayhead, .cb-lanehead, .cb-cell, .cb-mobile-day { background: var(--paper-2); min-width: 0; }
+.cb-corner { padding: 0.6rem 0.8rem; font-size: 0.8rem; color: var(--ink-3); }
+.cb-dayhead { padding: 0; position: relative; }
+.cb-dayhead summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; padding: 0.6rem 0.75rem; min-height: 44px; font-weight: 600; }
+.cb-dayhead summary::-webkit-details-marker { display: none; }
+.cb-dayhead summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid var(--ink-3); border-bottom: 1.5px solid var(--ink-3); transform: rotate(45deg); margin-right: 3px; flex: none; }
+.cb-dayhead[open] summary::after { transform: rotate(225deg); }
+.cb-dayhead .cb-daylabel { font-weight: 400; color: var(--ink-3); font-size: 0.82rem; margin-left: 0.3rem; }
+.cb-dayhead .cb-daymenu { position: absolute; z-index: 5; left: 0; top: 100%; min-width: 220px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.35); padding: 0.8rem 0.9rem; display: grid; gap: 0.6rem; }
+.cb-daymenu label { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; cursor: pointer; min-height: 32px; }
+.cb-daymenu label.stack { display: block; }
+.cb-daymenu input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--slate); margin: 0; }
+.cb-day-off { background: repeating-linear-gradient(135deg, var(--paper) 0 6px, var(--paper-2) 6px 12px) !important; color: var(--ink-3); }
+.cb-dayhead.cb-day-off summary { color: var(--ink-2); }
+.cb-lanehead { padding: 0.7rem 0.8rem; display: grid; gap: 0.5rem; align-content: start; border-left: 5px solid var(--lane); }
+.cb-lanehead .cb-lanename { font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+.cb-lanehead .cb-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.cb-lanehead .cb-grade { color: var(--ink-3); font-size: 0.85rem; font-weight: 400; }
+.cb-tray { display: grid; gap: 4px; }
+.cb-cell { container-type: inline-size; padding: 4px; display: flex; flex-direction: column; gap: 3px; min-height: 64px; align-items: stretch; }
+.cb-cell.cb-drop-ok { outline: 2px dashed var(--slate); outline-offset: -3px; background: var(--slate-soft); }
+.cb-cell.cb-placing-target { cursor: pointer; }
+.cb-cell.cb-placing-target:hover, .cb-cell.cb-placing-target:focus-visible { background: var(--slate-soft); }
+.cb-cell.cb-placing-target:focus-visible { outline: 2px solid var(--focus); outline-offset: -3px; }
+.cb-placing { margin: 0.6rem 0 0; font-size: 0.92rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; align-items: center; }
+
+/* Blocks: height is minutes (1.5 px a minute, 15 px floor); fill is the lane tint; the icon is the subject. */
+.cb-block { position: relative; display: flex; align-items: center; gap: 4px; min-height: 15px; border-radius: 6px; border: 0; border-left: 4px solid var(--lane); background: color-mix(in srgb, var(--lane) 22%, var(--paper-2)); color: var(--ink); padding: 0 6px 0 5px; text-align: left; font-size: 0.8rem; line-height: 1.15; overflow: hidden; width: 100%; touch-action: none; user-select: none; -webkit-user-select: none; }
+.cb-block-main { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 5px; flex: 1 1 auto; min-width: 0; height: 100%; cursor: pointer; color: inherit; font: inherit; }
+.cb-block-main:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; border-radius: 4px; }
+.cb-block:hover { background: color-mix(in srgb, var(--lane) 26%, var(--paper-2)); }
+.cb-block.is-selected { outline: 2px solid var(--lane); outline-offset: 0; }
+.cb-block.is-placing { outline: 2px dashed var(--slate); outline-offset: 1px; }
+.cb-block.is-dragging { opacity: 0.4; }
+/* Every sprite icon needs a size of its own: without one Safari lays an inline <svg> out at 300×150
+   (seen on the suggestion rows and the lessons heading). Contexts below override it. */
+.cb-icon { width: 16px; height: 16px; flex: none; vertical-align: -0.15em; }
+.cb-block .cb-icon { width: 14px; height: 14px; flex: none; }
+.cb-block .cb-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; min-width: 0; flex: 1; }
+.cb-block .cb-min { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3); flex: none; }
+.cb-block.tiny { font-size: 0.68rem; padding-top: 0; padding-bottom: 0; }
+.cb-block.tiny .cb-icon, .cb-block.tiny .cb-min { display: none; }
+.cb-block.together { background: linear-gradient(135deg, color-mix(in srgb, var(--lane) 18%, var(--paper-2)), color-mix(in srgb, var(--lane-2, var(--lane)) 18%, var(--paper-2))); border-left-color: var(--lane); box-shadow: inset 4px 0 0 var(--lane-2, var(--lane)), inset 0 0 0 0 transparent; border-left-width: 4px; }
+.cb-block.together::before { content: ""; position: absolute; left: 0; top: 0; bottom: 50%; width: 4px; background: var(--lane); }
+.cb-block.together::after { content: ""; position: absolute; left: 0; top: 50%; bottom: 0; width: 4px; background: var(--lane-2, var(--lane)); }
+@container (max-width: 190px) { .cb-block .cb-together-tag { display: none; } }
+.cb-block .cb-together-tag { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); flex: none; }
+.cb-tray .cb-block { min-height: 44px; flex-wrap: wrap; row-gap: 2px; padding: 5px 6px; height: auto !important; }
+.cb-tray .cb-block .cb-title { white-space: normal; }
+.cb-trayitem { display: grid; gap: 3px; }
+.cb-shortcuts { display: flex; flex-wrap: wrap; gap: 3px; }
+.cb-shortcuts button, .cb-chip { background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; font-size: 0.72rem; padding: 0.2rem 0.55rem; color: var(--ink-2); min-height: 28px; }
+.cb-shortcuts button:hover, .cb-chip:hover { border-color: var(--slate); color: var(--ink); }
+.cb-chip[aria-pressed="true"] { background: var(--slate-soft); border-color: var(--slate); color: var(--ink); }
+.cb-ghost { position: fixed; z-index: 50; pointer-events: none; opacity: 0.85; width: 140px; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.4); }
+.cb-add-course { width: 100%; justify-content: center; font-size: 0.86rem; padding: 0.45rem 0.6rem; min-height: 40px; }
+.cb-menu { position: absolute; z-index: 30; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.4); padding: 0.5rem; display: grid; gap: 2px; min-width: 240px; max-height: min(60vh, 420px); overflow: auto; }
+.cb-menu button { text-align: left; background: none; border: 0; padding: 0.5rem 0.65rem; border-radius: 6px; display: flex; justify-content: space-between; gap: 0.8rem; align-items: center; min-height: 40px; color: var(--ink); }
+.cb-menu button:hover, .cb-menu button:focus-visible { background: var(--slate-soft); }
+.cb-menu button > span:first-child { display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; min-width: 0; }
+.cb-menu button .cb-meta { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); white-space: nowrap; }
+.cb-menu .cb-menu-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding: 0.4rem 0.65rem 0.2rem; }
+.cb-menu hr { margin: 0.3rem 0; }
+
+/* Lane tabs (one lane at a time on a phone) */
+.cb-lane-tabs { display: none; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+.cb-lane-tabs button { border: 1.5px solid var(--rule); background: var(--paper-2); border-radius: 999px; padding: 0.4rem 0.9rem; min-height: 40px; color: var(--ink-2); display: inline-flex; gap: 0.4rem; align-items: center; }
+.cb-lane-tabs button[aria-selected="true"] { border-color: var(--lane); color: var(--ink); background: color-mix(in srgb, var(--lane) 14%, var(--paper-2)); }
+.cb-lane-tabs .cb-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* Course panel (screen 3) */
+.cb-panel { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem 1.1rem 1.2rem; position: sticky; top: 108px; max-height: calc(100vh - 124px); overflow: auto; display: grid; gap: 0.9rem; align-content: start; }
+.cb-panel[hidden] { display: none; }
+.cb-panel-head { display: flex; justify-content: space-between; gap: 0.6rem; align-items: center; }
+.cb-panel-head h3 { display: flex; align-items: center; gap: 0.45rem; min-width: 0; }
+.cb-panel-head .cb-icon { width: 18px; height: 18px; color: var(--lane); flex: none; }
+.cb-close { background: none; border: 1px solid var(--rule); border-radius: 50%; width: 36px; height: 36px; color: var(--ink-2); flex: none; font-size: 1.1rem; line-height: 1; }
+.cb-close:hover { border-color: var(--ink-3); color: var(--ink); }
+.cb-field { display: grid; gap: 0.25rem; min-width: 0; }
+.cb-field label, .cb-panel .cb-group > label, .cb-group legend { margin: 0; }
+.cb-two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.6rem; }
+.cb-group { border: 0; padding: 0; margin: 0; display: grid; gap: 0.4rem; min-width: 0; }
+.cb-group legend { font-weight: 600; font-size: 0.95rem; padding: 0; margin-bottom: 0.25rem; }
+.cb-choice { display: grid; gap: 0.3rem; }
+.cb-choice label { display: grid; grid-template-columns: 18px 1fr; gap: 0.5rem; align-items: start; padding: 0.55rem 0.7rem; border: 1.5px solid var(--rule); border-radius: 8px; font-weight: 500; cursor: pointer; }
+.cb-choice label:has(input:checked) { border-color: var(--slate); background: var(--slate-soft); }
+.cb-choice input { margin: 4px 0 0; accent-color: var(--slate); }
+.cb-choice .cb-detail { display: block; font-weight: 400; font-size: 0.84rem; color: var(--ink-2); margin-top: 0.15rem; line-height: 1.4; }
+.cb-days { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.cb-days button { min-width: 44px; min-height: 40px; border-radius: 8px; border: 1.5px solid var(--rule); background: var(--paper); color: var(--ink-2); font-weight: 600; font-size: 0.85rem; }
+.cb-days button[aria-pressed="true"] { background: var(--lane, var(--slate)); color: #fff; border-color: var(--lane, var(--slate)); }
+.cb-days button.off { text-decoration: line-through; opacity: 0.6; }
+.cb-checks-inline { display: grid; gap: 0.3rem; }
+.cb-checks-inline label { display: flex; gap: 0.5rem; align-items: center; font-weight: 500; min-height: 36px; cursor: pointer; }
+.cb-checks-inline input { width: 18px; height: 18px; margin: 0; accent-color: var(--slate); }
+.cb-resource { border: 1px solid var(--rule); border-radius: 8px; padding: 0.6rem; display: grid; gap: 0.45rem; }
+.cb-resource .cb-two input { min-height: 40px; }
+.cb-panel .cb-danger { color: var(--danger); border-color: currentColor; background: none; }
+.cb-panel-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* Screen 4: lesson workspace */
+.cb-workspace { background: var(--paper); }
+.cb-ws-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 0.8rem; margin-bottom: 1rem; }
+.cb-ws-head h2 { display: flex; align-items: center; gap: 0.5rem; }
+.cb-ws-head .cb-icon { width: 22px; height: 22px; color: var(--lane); }
+.cb-ws-head p { margin: 0.2rem 0 0; }
+.cb-toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; align-items: flex-start; }
+/* An open tool drops onto its own full-width line under the buttons. Before, the open panel sat
+   inside the button row, squeezed to half the width, and stretched "Add a row" into a tall
+   column beside it (Josh's photo, October 6). */
+.cb-toolbar details[open] { flex: 1 1 100%; order: 10; }
+.cb-toolbar details { position: relative; }
+.cb-toolbar summary { list-style: none; cursor: pointer; }
+.cb-toolbar summary::-webkit-details-marker { display: none; }
+.cb-toolbar details[open] > summary .btn, .cb-toolbar details[open] > summary.btn { border-color: var(--slate); background: var(--slate-soft); }
+.cb-tool-body { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; margin: 0.6rem 0 0.4rem; display: grid; gap: 0.75rem; }
+.cb-tool-body .cb-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: end; }
+.cb-tool-body .cb-field { flex: 1 1 140px; }
+.cb-tool-body .cb-field.short { flex: 0 1 120px; }
+.cb-sentence { background: var(--slate-soft); border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.95rem; margin: 0; }
+.cb-review { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.2rem; max-height: 320px; overflow: auto; border: 1px solid var(--rule); border-radius: 8px; }
+.cb-review li { margin: 0; }
+.cb-review label { display: grid; grid-template-columns: 18px 1fr; gap: 0.6rem; align-items: start; padding: 0.45rem 0.7rem; font-weight: 400; margin: 0; border-bottom: 1px solid var(--rule); }
+.cb-review li:last-child label { border-bottom: 0; }
+.cb-review input { margin-top: 4px; accent-color: var(--slate); }
+.cb-review .cb-unit { display: block; font-size: 0.8rem; color: var(--ink-3); }
+.cb-table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--paper-2); }
+.cb-table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: 0.95rem; }
+.cb-table th { position: sticky; top: 0; background: var(--paper-2); z-index: 1; padding: 0.55rem 0.5rem; }
+.cb-table td { padding: 0.35rem 0.4rem; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.cb-table tr:last-child td { border-bottom: 0; }
+.cb-table tr.excluded td { opacity: 0.55; }
+.cb-table tr.is-selected-row td { background: var(--slate-soft); }
+.cb-table tr.is-drop-before td { box-shadow: inset 0 2px 0 var(--slate); }
+.cb-table tr.is-drop-after td { box-shadow: inset 0 -2px 0 var(--slate); }
+.cb-table .cb-num { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-3); width: 2.4rem; text-align: right; padding-top: 0.9rem; }
+.cb-table .cb-col-tick { width: 2.2rem; }
+.cb-table .cb-col-handle { width: 2.2rem; }
+.cb-table .cb-col-title { min-width: 180px; }
+.cb-table .cb-col-details { min-width: 240px; }
+.cb-table .cb-col-min { width: 5.5rem; }
+.cb-table .cb-col-unit { min-width: 130px; }
+.cb-table .cb-col-tags { min-width: 220px; }
+.cb-table input[type="text"], .cb-table input[type="number"], .cb-table textarea { min-height: 40px; padding: 0.4rem 0.5rem; }
+.cb-table textarea { min-height: 40px; height: 40px; resize: vertical; }
+.cb-table input[type="checkbox"] { width: 20px; height: 20px; margin: 0.6rem 0 0; accent-color: var(--slate); }
+.cb-handle { background: none; border: 0; color: var(--ink-3); cursor: grab; width: 32px; height: 40px; touch-action: none; display: grid; place-items: center; border-radius: 6px; }
+.cb-handle:hover { background: var(--slate-soft); color: var(--ink); }
+.cb-handle span { display: block; width: 14px; height: 2px; background: currentColor; box-shadow: 0 -4px 0 currentColor, 0 4px 0 currentColor; }
+.cb-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; padding-top: 0.2rem; }
+.cb-tags .cb-points { width: 80px; min-height: 32px; padding: 0.2rem 0.4rem; font-size: 0.85rem; }
+.cb-tags .cb-points-label { font-size: 0.78rem; color: var(--ink-3); }
+.cb-rowtools { display: flex; gap: 0.2rem; flex-wrap: wrap; align-items: center; padding-top: 0.2rem; }
+.cb-rowtools button { background: none; border: 1px solid transparent; color: var(--ink-3); font-size: 0.8rem; padding: 0.3rem 0.5rem; border-radius: 6px; min-height: 32px; }
+.cb-rowtools button:hover { border-color: var(--rule); color: var(--ink); }
+.cb-ws-foot { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: space-between; align-items: center; margin-top: 1rem; }
+.cb-empty { padding: 1.6rem; text-align: center; color: var(--ink-2); }
+
+/* Screen 5: preview */
+.cb-preview-controls { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; align-items: end; margin: 1rem 0 1.2rem; }
+.cb-preview-controls .cb-field { min-width: 150px; }
+.cb-stepper { display: inline-flex; align-items: center; border: 1.5px solid var(--rule); border-radius: 8px; overflow: hidden; min-height: 44px; }
+.cb-stepper button { background: var(--paper-2); border: 0; width: 44px; min-height: 44px; font-size: 1.1rem; color: var(--ink-2); }
+.cb-stepper button:hover { background: var(--slate-soft); color: var(--ink); }
+.cb-stepper span { padding: 0 0.8rem; font-weight: 600; min-width: 90px; text-align: center; font-variant-numeric: tabular-nums; }
+.cb-preview-layout { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+@media (max-width: 860px) { .cb-preview-layout { grid-template-columns: 1fr; } }
+.cb-today { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 16px; padding: 1rem 1.1rem 1.1rem; position: relative; }
+.cb-today .cb-badge { position: absolute; top: -0.7rem; right: 1rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--slate); color: var(--slate-ink); padding: 0.22rem 0.55rem; border-radius: 6px; }
+.cb-today h3 { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.2rem; }
+.cb-today .cb-dot { width: 12px; height: 12px; border-radius: 50%; }
+.cb-today .cb-date { color: var(--ink-3); font-size: 0.9rem; margin: 0 0 0.8rem; }
+.cb-today ul { list-style: none; padding: 0; margin: 0; max-width: none; }
+.cb-today li { display: grid; grid-template-columns: 22px 1fr auto; gap: 0.6rem; padding: 0.65rem 0; border-top: 1px solid var(--rule); margin: 0; align-items: start; }
+.cb-today li .cb-icon { width: 20px; height: 20px; color: var(--lane); margin-top: 2px; }
+.cb-today li .cb-course { font-size: 0.8rem; color: var(--ink-3); font-family: var(--mono); letter-spacing: 0.04em; }
+.cb-today li .cb-ltitle { font-weight: 600; }
+.cb-today li .cb-details { font-size: 0.92rem; color: var(--ink-2); margin: 0.15rem 0 0; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cb-today li .cb-details.open { display: block; }
+.cb-today li .cb-more { background: none; border: 0; color: var(--slate); padding: 0.2rem 0; font-size: 0.86rem; min-height: 32px; }
+.cb-today li .cb-mins { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-2); white-space: nowrap; padding-top: 2px; }
+.cb-today li .cb-nextup { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); margin-left: 0.4rem; }
+.cb-today .cb-total { border-top: 1px solid var(--rule); padding-top: 0.6rem; margin-top: 0.2rem; display: flex; justify-content: space-between; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cb-today.together { margin-top: 1rem; border-style: dashed; }
+.cb-today .cb-away { padding: 1.2rem 0 0.4rem; color: var(--ink-2); }
+.cb-today .cb-away strong { display: block; font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin-bottom: 0.2rem; }
+.cb-finish { display: grid; gap: 0.6rem; }
+.cb-finish h3 { margin-bottom: 0.2rem; }
+.cb-finish .cb-fin { background: var(--paper-2); border: 1px solid var(--rule); border-left: 4px solid var(--lane); border-radius: 10px; padding: 0.7rem 0.9rem; }
+.cb-finish .cb-fin b { display: block; }
+.cb-finish .cb-fin span { color: var(--ink-2); font-size: 0.95rem; }
+.cb-finish .cb-fin .hint { margin-top: 0.15rem; }
+
+/* Screen 6: checks */
+.cb-checks { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.5rem; max-width: none; }
+.cb-checks li { margin: 0; display: grid; grid-template-columns: 12px 1fr auto; gap: 0.7rem; align-items: center; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.9rem; }
+.cb-checks li::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--sev); }
+.cb-checks li.red { --sev: var(--danger); border-color: color-mix(in srgb, var(--danger) 40%, var(--rule)); }
+.cb-checks li.yellow { --sev: var(--warn); }
+.cb-checks li.ok { --sev: var(--success); grid-template-columns: 12px 1fr; }
+.cb-checks li.ok:has(.btn) { grid-template-columns: 12px 1fr auto; }
+.cb-checks li .cb-check-text b { display: block; font-size: 0.8rem; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.cb-checks .btn { white-space: nowrap; }
+#download-name { margin-top: 0.8rem; }
+
+/* Phone: one lane at a time, days stacked, tap to place. */
+@media (max-width: 640px) {
+  .cb-privacy { top: 60px; }
+  .cb-top { padding: 1rem 1rem 0; }
+  .cb .wrap, .cb .wrap.wide { padding: 0 1rem; }
+  .cb-lane-tabs { display: flex; }
+  .cb-grid { grid-template-columns: 1fr; min-width: 0; border-radius: 10px; }
+  .cb-grid .cb-corner { display: none; }
+  .cb-grid .cb-lanehead { display: none; }
+  .cb-grid .cb-lanehead.is-active { display: grid; border-left-width: 6px; }
+  .cb-grid .cb-dayhead { display: none; }
+  .cb-grid .cb-dayhead.cb-mobile-day { display: block; border-bottom: 1px solid var(--rule); }
+  .cb-grid .cb-dayhead.cb-mobile-day summary { background: var(--paper); }
+  .cb-grid .cb-cell { min-height: 56px; }
+  .cb-block { touch-action: auto; }
+  .cb-grid .cb-dayrow { display: none; }
+  .cb-grid .cb-dayrow.is-active { display: grid; grid-template-columns: 1fr; }
+  .cb-grid .cb-mobile-day { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; font-weight: 600; background: var(--paper); border-bottom: 1px solid var(--rule); }
+  .cb-grid .cb-mobile-day .cb-daylabel { font-weight: 400; color: var(--ink-3); font-size: 0.85rem; }
+  .cb-grid .cb-mobile-day .cb-link-btn { padding: 0.3rem 0.4rem; min-height: 36px; font-size: 0.85rem; }
+  .cb-block { min-height: 44px !important; height: auto !important; font-size: 0.92rem; padding: 6px 8px 6px 7px; }
+  .cb-block.tiny .cb-icon, .cb-block.tiny .cb-min { display: inline-block; }
+  .cb-block.tiny { font-size: 0.92rem; }
+  .cb-week-layout.has-panel { grid-template-columns: 1fr; }
+  .cb-panel { position: fixed; inset: 0; top: 0; max-height: none; border-radius: 0; z-index: 40; padding: 1rem 1rem 2rem; }
+  .cb-table { min-width: 0; }
+  .cb-table thead { display: none; }
+  .cb-table tr { display: grid; grid-template-columns: 2.2rem 1fr 2.2rem; gap: 0.3rem 0.4rem; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--rule); }
+  .cb-table td { border: 0; padding: 0; }
+  .cb-table td.cb-col-title, .cb-table td.cb-col-details, .cb-table td.cb-col-tags, .cb-table td.cb-col-unit, .cb-table td.cb-col-min, .cb-table td.cb-col-tools { grid-column: 1 / -1; }
+  .cb-table td.cb-col-min { display: flex; gap: 0.6rem; align-items: center; }
+  .cb-table td.cb-col-min input { width: 6rem; }
+  .cb-table .cb-num { padding-top: 0.6rem; text-align: left; width: auto; }
+  .cb-two { grid-template-columns: 1fr; }
+}
+@media (min-width: 641px) {
+  .cb-grid .cb-mobile-day { display: none; }
+  .cb-grid .cb-dayrow { display: contents; }
+}
+
+/* Motion: keep it to a crossfade, and none at all when the reader asks. */
+.cb-screen { animation: cb-fade 180ms ease-out; }
+@keyframes cb-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .cb-screen { animation: none; } .cb-ghost { transition: none; } }
+
+/* Screen 3: Lessons */
+.cb-lesson-list { display: grid; gap: 0.6rem; margin-top: 1.2rem; }
+.cb-lesson-row { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto auto; gap: 0.8rem; align-items: center; background: var(--paper-2); border: 1px solid var(--rule); border-left: 5px solid var(--lane); border-radius: 12px; padding: 0.8rem 1rem; }
+.cb-lesson-row .cb-icon { width: 22px; height: 22px; color: var(--lane); }
+.cb-lesson-main { display: grid; gap: 0.1rem; min-width: 0; }
+.cb-lesson-main b { font-size: 1.05rem; }
+.cb-lesson-count { font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
+.cb-lesson-count.none { color: var(--ink-2); font-weight: 600; }
+@media (max-width: 640px) { .cb-lesson-row { grid-template-columns: 24px minmax(0, 1fr); } .cb-lesson-row .cb-lesson-count, .cb-lesson-row .btn { grid-column: 2; justify-self: start; } }
+
+/* The one question before Preview */
+.cb-dialog { border: 1px solid var(--rule); border-radius: 14px; background: var(--paper-2); color: var(--ink); padding: 1.3rem 1.5rem; max-width: 30rem; }
+.cb-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+.cb-dialog h3 { margin: 0 0 0.5rem; }
+.cb-dialog p { margin: 0; }
+
+/* Pattern fill in three steps */
+.cb-pf-step { display: grid; gap: 0.55rem; padding: 0.2rem 0 0.6rem; border-bottom: 1px solid var(--rule); }
+.cb-pf-step:last-of-type { border-bottom: 0; }
+.cb-pf-head { display: flex; align-items: center; gap: 0.55rem; }
+.cb-pf-n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--slate); color: var(--slate-ink); font-family: var(--mono); font-size: 0.78rem; }
+
+/* The preview, drawn inside a phone */
+.cb-phone { width: min(100%, 392px); margin: 0.4rem auto 0; background: #111; border-radius: 48px; padding: 14px; box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #2a2a2a; position: relative; }
+.cb-phone-notch { width: 110px; height: 30px; background: #111; border-radius: 0 0 18px 18px; position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 2; }
+.cb-phone-screen { background: var(--paper); border-radius: 36px; padding: 3.2rem 0.9rem 1.2rem; min-height: 520px; display: grid; gap: 0.9rem; align-content: start; }
+.cb-phone-top { display: flex; flex-direction: column; gap: 0.1rem; padding: 0 0.3rem; }
+.cb-phone-top > span:first-child { font-family: var(--serif, inherit); font-weight: 700; font-size: 1.6rem; }
+.cb-phone-top .cb-phone-date { color: var(--ink-3); font-size: 0.9rem; }
+.cb-phone-note { text-align: center; margin: 0.6rem 0 0; }
+.cb-phone .cb-today { border-radius: 16px; }
+
+/* The draft in this browser */
+.cb-save-status { margin-left: 0.6rem; opacity: 0.85; }
+.cb-save-status[data-tone="warn"] { color: var(--warn); font-weight: 600; }
+.cb-top { position: relative; }
+.cb-clear-draft { position: absolute; right: 0; top: 0; font-size: 0.86rem; }
+.cb-replace-preview { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.3rem; font-size: 0.92rem; }
+.cb-replace-preview s { color: var(--ink-3); }
+
+/* Paste review: every line */
+.cb-review li.left-out > label > span { color: var(--ink-3); }
+.cb-review .cb-line-note { display: block; font-size: 0.8rem; color: var(--ink-3); margin: 0.1rem 0 0 1.7rem; }
+.cb-keep-all { display: inline-flex; gap: 0.4rem; align-items: center; font-size: 0.9rem; margin: 0.2rem 0 0.4rem; }
+.cb-warn { color: var(--warn); background: var(--paper-2); border-left: 3px solid var(--warn); border-radius: 8px; padding: 0.5rem 0.8rem; }
+
+/* Ready: a name summary's three actions */
+.cb-check-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: flex-end; }
+.cb-graded-row { display: inline-flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; font-weight: 500; margin: 0; }
+
+/* ==========================================================================================
+   Visual pass, October 6, 2026 (ChatGPT's aesthetics direction, applied on Josh's word).
+   CSS only: no new controls, data, steps or copy. Every color is an approved token from
+   assets/site.css; the lighter board is Chalkboard 2 (--board-2), the brand's "cards on dark
+   grounds" tone, because no separate hex exists for the lighter textured board.
+   ========================================================================================== */
+
+/* 1. A lighter atmosphere: the surround steps up to Chalkboard 2, the ruling stays faint, the
+   privacy strip becomes a quiet band in the surface system, and the footer closes the page
+   instead of opening a second one. */
+/* The surround: Chalkboard 2 lifted with a touch of chalk (a mix of two approved tokens, no new hex),
+   so the opening reads as the lighter gray-green board rather than the near-black one. */
+/* Reed's call, Josh approved 5:00 PM ET Oct 6: the Start surround goes back to Chalkboard #1E2823 (--board). */
+.cb .cb-start.board { background: var(--board); background-image: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(247, 245, 240, 0.05) 31px 32px); }
+.cb .cb-start.board .cb-lede { color: rgba(247, 245, 240, 0.9); }
+.cb .cb-start.rail { border-bottom-width: 4px; box-shadow: inset 0 -5px 0 var(--wood-edge); }
+.cb-privacy { background: var(--paper-2); color: var(--ink-2); border-bottom: 1px solid color-mix(in srgb, var(--rule) 70%, transparent); font-size: 0.84rem; padding: 0.35rem 0; }
+.cb-privacy .cb-save-status { color: var(--ink-3); }
+.cb ~ .site-footer { padding: 1.6rem 0 1.4rem; }
+.cb ~ .site-footer .wrap { gap: 0.9rem; }
+.cb ~ .site-footer .wordmark { max-width: min(220px, 60%); }
+.cb ~ .site-footer.rail-top { border-top-width: 4px; box-shadow: inset 0 5px 0 var(--wood-edge); }
+.cb ~ .site-footer .fine { font-size: 0.82rem; }
+
+/* The opening heading gets room; the lede and button sit under it with a calm rhythm. */
+.cb-start { padding: 3.2rem 0 3.4rem; }
+.cb-start h1 { font-size: clamp(1.95rem, 1.2rem + 2.6vw, 3rem); line-height: 1.08; }
+.cb-start .cb-lede { font-size: 1.12rem; line-height: 1.55; margin: 1rem 0 1.5rem; }
+
+/* 7. One geometry: chips fully round, controls 8 px, cards 12 to 14 px, and a shared spacing step. */
+.cb { --cb-step: 8px; --cb-radius-control: 8px; --cb-radius-card: 12px; --cb-shadow: 0 1px 2px rgba(30, 42, 51, 0.06), 0 6px 18px -14px rgba(30, 42, 51, 0.35); }
+.cb-steps { gap: 0.25rem 0.1rem; }
+.cb-steps li + li::before { width: 10px; margin: 0 0.25rem; background: color-mix(in srgb, var(--rule) 80%, transparent); }
+.cb-steps button { border-bottom: 0; border-radius: 999px; padding: 0.32rem 0.7rem; font-size: 0.9rem; position: relative; }
+.cb-steps button[aria-current="step"] { background: var(--slate-soft); color: var(--ink); font-weight: 600; }
+.cb-steps button[aria-current="step"]::after { content: ""; position: absolute; left: 0.7rem; right: 0.7rem; bottom: 3px; height: 2px; border-radius: 2px; background: var(--slate); transform: rotate(-0.6deg); }
+.cb-steps button:disabled { opacity: 0.45; }
+.cb-card, .cb-panel, .cb-tool-body, .cb-today, .cb-finish .cb-fin, .cb-lesson-row, .cb-table-wrap, .cb-fieldset, .cb-lane-row, .cb-dialog { border-radius: var(--cb-radius-card); }
+.cb-panel, .cb-tool-body, .cb-lesson-row, .cb-lane-row, .cb-card { box-shadow: var(--cb-shadow); }
+.cb input[type="text"], .cb input[type="number"], .cb input[type="date"], .cb input[type="url"], .cb textarea, .cb select { border-radius: var(--cb-radius-control); }
+
+/* 2. Course blocks as small, well-made cards: a soft surface, a narrow strip in the child's color,
+   even padding, the icon and title aligned, the minutes as a quiet capsule. */
+.cb-block { border-radius: 10px; border: 1px solid color-mix(in srgb, var(--lane) 28%, var(--rule)); border-left: 3px solid var(--lane); background: color-mix(in srgb, var(--lane) 12%, var(--paper-2)); padding: 3px 7px 3px 7px; gap: 6px; min-height: 22px; box-shadow: 0 1px 1px rgba(30, 42, 51, 0.05); }
+.cb-block:hover { background: color-mix(in srgb, var(--lane) 18%, var(--paper-2)); box-shadow: 0 2px 6px -2px rgba(30, 42, 51, 0.25); transform: translateY(-1px); }
+.cb-block .cb-title { font-weight: 600; }
+.cb-block .cb-min { background: color-mix(in srgb, var(--ink) 7%, transparent); border-radius: 999px; padding: 0 6px; line-height: 16px; font-size: 0.66rem; }
+.cb-block.together { border-left-color: transparent; }
+.cb-block.together::before, .cb-block.together::after { width: 3px; }
+.cb-block.tiny { padding-top: 1px; padding-bottom: 1px; min-height: 15px; }
+.cb-cell { gap: 4px; padding: 5px; }
+.cb-grid { gap: 1px; background: color-mix(in srgb, var(--rule) 80%, transparent); }
+.cb-lanehead { border-left-width: 4px; }
+
+/* 3. One chip family: the same height, padding and round ends; a quiet neutral when off, a soft
+   slate fill with a clear outline when on, and a visible focus ring. */
+.cb-shortcuts button, .cb-chip, .cb-days button, .cb-tags .cb-chip { min-height: 28px; padding: 0.15rem 0.7rem; font-size: 0.78rem; font-weight: 500; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--rule) 85%, transparent); background: color-mix(in srgb, var(--paper) 70%, var(--paper-2)); color: var(--ink-2); }
+.cb-chip[aria-pressed="true"], .cb-shortcuts button[aria-pressed="true"] { background: var(--slate-soft); border-color: var(--slate); color: var(--ink); font-weight: 600; box-shadow: inset 0 0 0 1px var(--slate); }
+.cb-chip:focus-visible, .cb-shortcuts button:focus-visible, .cb-days button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cb-tags { gap: 0.3rem; }
+.cb-tags .cb-points { border-radius: var(--cb-radius-control); }
+
+/* 5. Typography does the work: lesson titles lead, row numbers and helper labels recede. */
+.cb h2 { font-size: clamp(1.45rem, 1.1rem + 1.1vw, 1.75rem); }
+.cb-table .cb-col-title input { font-weight: 600; font-size: 1rem; }
+.cb-table .cb-num { font-size: 0.74rem; }
+.cb-table th { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--ink-3); }
+.cb-handle { color: var(--ink-2); }
+.cb-rowtools button { font-size: 0.78rem; }
+
+/* 6. A calmer lesson table: soft resting borders, a stronger border only on focus, lighter row
+   lines, aligned tops, one quiet row highlight, and excluded rows still readable. */
+.cb-table input[type="text"], .cb-table input[type="number"], .cb-table textarea { border-color: color-mix(in srgb, var(--rule) 55%, transparent); background: color-mix(in srgb, var(--paper-2) 92%, var(--paper)); }
+.cb-table input:focus-visible, .cb-table textarea:focus-visible { border-color: var(--focus); background: var(--paper-2); }
+.cb-table td { border-bottom-color: color-mix(in srgb, var(--rule) 55%, transparent); padding: 0.5rem 0.45rem; }
+.cb-table tr:hover td { background: color-mix(in srgb, var(--slate-soft) 45%, transparent); }
+.cb-table tr.excluded td { opacity: 1; }
+.cb-table tr.excluded input, .cb-table tr.excluded textarea, .cb-table tr.excluded .cb-chip { opacity: 0.65; }
+.cb-table tr.excluded .cb-col-title input { text-decoration: line-through; text-decoration-color: var(--ink-3); }
+.cb-table-wrap { border-color: color-mix(in srgb, var(--rule) 80%, transparent); }
+
+/* 8. The preview frame: a thinner bezel, a softer shadow, and finish cards that match it. */
+.cb-phone { padding: 9px; border-radius: 42px; background: #1E2A33; box-shadow: 0 16px 36px -22px rgba(30, 42, 51, 0.5), inset 0 0 0 1px rgba(247, 245, 240, 0.08); }
+.cb-phone-notch { width: 92px; height: 24px; top: 9px; border-radius: 0 0 14px 14px; background: #1E2A33; }
+.cb-phone-screen { border-radius: 34px; padding: 2.8rem 0.85rem 1.1rem; }
+.cb-finish .cb-fin { border-left-width: 3px; }
+
+/* 9. Small motion that answers an action and stops. */
+.cb-chip, .cb-shortcuts button, .cb-days button, .cb-block, .btn, .cb-steps button, .cb-table input, .cb-table textarea, .cb-lesson-row .btn { transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease, color 140ms ease; }
+.cb .btn:active { transform: translateY(1px); }
+@media (prefers-reduced-motion: reduce) {
+  .cb-chip, .cb-shortcuts button, .cb-days button, .cb-block, .btn, .cb-steps button, .cb-table input, .cb-table textarea, .cb-lesson-row .btn { transition: none; }
+  .cb-block:hover, .cb .btn:active { transform: none; }
+}
+
+/* 2.0 batch A: open a file, private session, Review your plan, jumps, the chooser */
+.cb-private { display: inline-flex; gap: 0.5rem; align-items: center; margin: 1rem 0 0; color: rgba(247, 245, 240, 0.86); font-size: 0.95rem; }
+.cb-private input { accent-color: var(--slate); }
+.cb-open-note { margin: 0.8rem 0 0; color: rgba(247, 245, 240, 0.92); font-size: 0.95rem; max-width: 60ch; }
+.cb-open-note[data-tone="warn"] { color: var(--wood); font-weight: 600; }
+.cb-saved-line { color: var(--ink-2); font-size: 0.95rem; margin: 0 0 1rem; }
+.cb-review-h { font-size: 1.15rem; margin: 1.6rem 0 0.5rem; }
+.cb-rv-wrap { overflow-x: auto; }
+.cb-rv-week { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 560px; }
+.cb-rv-week th, .cb-rv-week td { padding: 0.5rem 0.55rem; border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent); text-align: left; vertical-align: top; }
+.cb-rv-week thead th { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.cb-rv-week th.off, .cb-rv-week td.off { background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in srgb, var(--rule) 35%, transparent) 6px 7px); color: var(--ink-3); }
+.cb-rv-week tbody th { white-space: nowrap; font-weight: 600; border-left: 4px solid var(--lane); }
+.cb-rv-week tbody th .cb-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--lane); margin-right: 0.4rem; }
+.cb-rv-block { display: block; font-size: 0.82rem; padding: 0.1rem 0.4rem; margin: 0.1rem 0; border-radius: 6px; background: color-mix(in srgb, var(--lane) 14%, var(--paper-2)); border-left: 3px solid var(--lane); }
+.cb-rv-block.together { border-left-style: double; border-left-width: 4px; }
+.cb-rv-loads { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; }
+.cb-rv-card { background: var(--paper-2); border: 1px solid var(--rule); border-left: 4px solid var(--lane); border-radius: 12px; padding: 0.8rem 1rem; box-shadow: var(--cb-shadow); }
+.cb-rv-card h4 { margin: 0 0 0.4rem; display: flex; align-items: center; gap: 0.45rem; font-family: var(--serif); }
+.cb-rv-card .cb-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--lane); }
+.cb-rv-card ul { list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+.cb-rv-card li { margin: 0; padding: 0.15rem 0; }
+.cb-rv-card li b { display: inline-block; min-width: 5.5rem; }
+.cb-rv-card li.off { color: var(--ink-3); }
+.cb-rv-courses { display: grid; gap: 0.5rem; }
+.cb-rv-course { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 0.8rem; align-items: center; background: var(--paper-2); border: 1px solid var(--rule); border-left: 4px solid var(--lane); border-radius: 12px; padding: 0.7rem 0.9rem; }
+.cb-rv-course .cb-icon { width: 22px; height: 22px; color: var(--lane); }
+.cb-rv-course.empty { border-left-color: var(--ink-3); }
+.cb-rv-jump { margin-top: 1rem; align-items: center; }
+.cb-rv-jump label { font-weight: 600; margin: 0; }
+.cb-finish-actions { margin-top: 1rem; }
+.cb-addonly { border-left-color: var(--wood); }
+.cb-week-input { width: 4.4rem; min-height: 40px; margin-left: 0.3rem; text-align: center; }
+.cb-jump { display: inline-flex; gap: 0.4rem; align-items: center; margin-left: auto; }
+.cb-jump label { margin: 0; font-weight: 600; font-size: 0.9rem; }
+.cb-jump input { min-height: 40px; }
+.cb-jump select { min-height: 40px; width: auto; padding: 0.3rem 2rem 0.3rem 0.6rem; }
+.cb-pacing { margin: 0.2rem 0 0; }
+.cb-chooser { padding: 1.4rem 1.2rem 1.2rem; }
+.cb-chooser h3 { margin: 0 0 0.8rem; }
+.cb-chooser-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
+.cb-chooser-grid button { text-align: left; background: var(--paper-2); border: 1.5px solid var(--rule); border-radius: 12px; padding: 0.9rem 1rem; display: grid; gap: 0.2rem; color: var(--ink); cursor: pointer; box-shadow: var(--cb-shadow); }
+.cb-chooser-grid button:hover { border-color: var(--slate); }
+.cb-chooser-grid button b { font-family: var(--serif); font-size: 1.05rem; }
+.cb-chooser-grid button span { color: var(--ink-2); font-size: 0.9rem; }
+@media (max-width: 640px) { .cb-rv-course { grid-template-columns: 24px minmax(0, 1fr); } .cb-rv-course .btn { grid-column: 2; justify-self: start; } .cb-jump { margin-left: 0; } }
+
+/* Week blocks as pills in the child's color (Josh, October 6, 3:55 PM ET): solid lane color, chalk
+   text, a grip at the left edge and a grab cursor, so a block reads as something to pick up and
+   move. A Teach-together pill is split between the two children's colors. */
+.cb-block { border-radius: 999px; border: 0; border-left: 0; background: var(--lane); color: #FFFFFF; padding: 0 9px 0 6px; gap: 5px; min-height: 24px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.12); cursor: grab; }
+.cb-block::before { content: ""; width: 6px; height: 12px; flex: none; border-radius: 1px; background-image: radial-gradient(circle, rgba(255, 255, 255, 0.75) 0.9px, transparent 1.1px); background-size: 3px 4px; opacity: 0.9; }
+.cb-block:active, .cb-block.is-dragging { cursor: grabbing; }
+.cb-block:hover { background: color-mix(in srgb, var(--lane) 88%, #FFFFFF); transform: translateY(-1px); box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.18); }
+.cb-block .cb-title { color: #FFFFFF; font-weight: 600; }
+.cb-block .cb-icon { color: rgba(255, 255, 255, 0.95); }
+.cb-block .cb-min { background: rgba(255, 255, 255, 0.22); color: #FFFFFF; }
+.cb-block .cb-together-tag { color: rgba(255, 255, 255, 0.9); }
+.cb-block.together { background: linear-gradient(90deg, var(--lane) 0 50%, var(--lane-2, var(--lane)) 50% 100%); }
+.cb-block.together::before { content: ""; }
+.cb-block.together::after { display: none; }
+.cb-block.is-selected { outline: 2px solid #FFFFFF; outline-offset: 1px; box-shadow: 0 0 0 4px color-mix(in srgb, var(--lane) 45%, transparent); }
+.cb-block.is-placing { outline: 2px dashed #FFFFFF; outline-offset: 1px; }
+.cb-block-main:focus-visible { outline: 2px solid #FFFFFF; outline-offset: -3px; border-radius: 999px; }
+.cb-block.tiny { border-radius: 999px; padding-left: 5px; }
+.cb-block.tiny::before { height: 8px; }
+.cb-tray .cb-block { min-height: 28px; }
+.cb-tray .cb-block .cb-title { white-space: normal; }
+@media (prefers-reduced-motion: reduce) { .cb-block:hover { transform: none; } }
+
+/* 2.0 batch B: teach together or a copy, duplicate, bulk edits, the notes helper */
+.cb-used-by { margin: 0 0 0.4rem; color: var(--ink-2); font-size: 0.9rem; }
+.cb-copy-choice { background: var(--slate-soft); border: 1px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.8rem; display: grid; gap: 0.5rem; margin: 0.4rem 0; }
+.cb-copy-choice p { margin: 0; }
+.cb-dup { position: relative; }
+.cb-dup summary { list-style: none; cursor: pointer; }
+.cb-dup summary::-webkit-details-marker { display: none; }
+.cb-dup-menu { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-top: 0.5rem; }
+.cb-bulk-note { background: var(--slate-soft); border-radius: 8px; padding: 0.5rem 0.8rem; margin: 0 0 0.8rem; font-size: 0.92rem; }
+.cb-helper { display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; margin-top: 0.25rem; }
+.cb-helper-label { font-size: 0.74rem; color: var(--ink-3); margin-right: 0.2rem; }
+.cb-helper .cb-chip { min-height: 24px; padding: 0 0.55rem; font-size: 0.72rem; }
+
+/* 2.0 batch C: share link box, co-op dialog, the fridge sheet (print only) */
+.cb-share { border-left-color: var(--slate); }
+.cb-share .cb-row { align-items: center; }
+.cb-share input[readonly] { flex: 1 1 320px; font-family: var(--mono); font-size: 0.82rem; }
+#coop-courses { display: grid; gap: 0.3rem; margin: 0.6rem 0; }
+#coop-courses label { display: flex; gap: 0.5rem; align-items: center; margin: 0; font-weight: 500; min-height: 36px; }
+.cb-print { display: none; }
+@media print {
+  body.cb-printing > *:not(.cb-print) { display: none !important; }
+  body.cb-printing .cb-print { display: block; color: #1E2A33; background: #FFFFFF; font-family: "Source Sans 3", Arial, sans-serif; padding: 0; }
+  .cb-print h1 { font-family: "Bitter", Georgia, serif; font-size: 22pt; margin: 0 0 10pt; }
+  .cb-print table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .cb-print th, .cb-print td { border: 1px solid #DDD5C6; padding: 6pt; vertical-align: top; text-align: left; font-size: 10pt; }
+  .cb-print thead th { background: #F6F2EA; font-weight: 600; }
+  .cb-print tbody th { width: 18%; font-weight: 600; border-left: 4pt solid var(--lane); }
+  .cb-print-dot { display: inline-block; width: 8pt; height: 8pt; border-radius: 50%; background: var(--lane); margin-right: 4pt; }
+  .cb-print-block { border-left: 3pt solid var(--lane); padding: 1pt 4pt; margin: 2pt 0; background: color-mix(in srgb, var(--lane) 12%, #FFFFFF); border-radius: 3pt; }
+  .cb-print p { font-size: 9pt; color: #6E7B86; margin-top: 10pt; }
+  @page { margin: 0.6in; }
+}
+
+/* Every pill the same height (Josh, October 6): 34 px on the grid and in the tray. */
+.cb-cell .cb-block, .cb-tray .cb-block { height: 34px; min-height: 34px; }
+.cb-cell { gap: 5px; padding: 6px; }
+/* A tray pill (a course not on a day yet) keeps one line and the same height: no wrapping, so the
+   grip never sits alone on a line above the title (Helix's BUG-20261006-16). */
+.cb-tray .cb-block { flex-wrap: nowrap; height: 34px !important; min-height: 34px; padding: 0 9px 0 6px; align-items: center; }
+.cb-tray .cb-block .cb-title { white-space: nowrap; }
+/* A narrow cell gives the title the icon's room (Quarry's BUG-20261006-12). */
+@container (max-width: 150px) { .cb-block .cb-icon { display: none; } }
+@container (max-width: 120px) { .cb-block .cb-min { display: none; } }
+
+/* ==========================================================================================
+   Quarry's batch for PR #2 (October 6, 2026): status colors by Reed's rule, contrast, the Start
+   buttons, Marlow's eight ideas (Josh's picks), search, sample starters, the phone bar.
+   ========================================================================================== */
+
+/* Status colors (Reed, 5:10 PM ET): light danger Clay, light warning Amber; dark both Wood. Every
+   warning or error text sits on a paper-2 surface, where Amber reaches 4.5:1; on the dark Start
+   ground the open note uses Wood in both modes. */
+.cb { --danger: #B7472A; --warn: #9A6A12; }
+:root[data-theme="dark"] .cb { --danger: #B98A5A; --warn: #B98A5A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cb { --danger: #B98A5A; --warn: #B98A5A; } }
+/* Muted text at 4.5:1 or better: the site's --ink-3 mixed toward ink (two kit tokens, no new hex). */
+.cb { --cb-muted: color-mix(in srgb, #6E7B86 70%, #1E2A33); }
+:root[data-theme="dark"] .cb { --cb-muted: #8F9A93; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cb { --cb-muted: #8F9A93; } }
+.cb .hint, .cb-corner, .cb-steps button, .cb-dayhead .cb-daylabel, .cb-lanehead .cb-grade, .cb-block .cb-min, .cb-menu button .cb-meta, .cb-menu .cb-menu-head,
+.cb-review .cb-unit, .cb-table .cb-num, .cb-table th, .cb-tags .cb-points-label, .cb-rowtools button, .cb-today .cb-date, .cb-today li .cb-course,
+.cb-replace-preview s, .cb-review li.left-out > label > span, .cb-review .cb-line-note, .cb-rv-week thead th, .cb-rv-week th.off, .cb-rv-week td.off,
+.cb-rv-card li.off, .cb-helper-label, .cb-print p, .cb-privacy .cb-save-status, .cb-grid .cb-mobile-day .cb-daylabel, .cb-day-off { color: var(--cb-muted); }
+.cb-block .cb-min { color: #FFFFFF; }
+.cb .muted { color: var(--ink-2); }
+
+/* "Open a file I made" and "Start from a sample week": a transparent outline on the board, chalk text
+   (the browser's gray button face put chalk on gray, about 1.05:1; Marlow (b), VG11). */
+.cb-start .btn-outline { background: transparent; color: var(--chalk); border-color: rgba(247, 245, 240, 0.62); }
+.cb-start .btn-outline:hover, .cb-start .btn-outline:focus-visible { background: rgba(247, 245, 240, 0.08); border-color: var(--chalk); color: var(--chalk); }
+.cb-start .btn-outline:focus-visible { outline: 2px solid var(--chalk); outline-offset: 2px; }
+.cb-start-more { gap: 0.6rem; flex-wrap: wrap; }
+
+/* Review your plan: the first block says what she built and whether it is ready; Download sits beside it. */
+.cb-ready { display: flex; flex-wrap: wrap; gap: 0.8rem 1.4rem; align-items: center; justify-content: space-between; background: var(--paper-2); border: 1px solid var(--rule); border-left: 4px solid var(--slate); border-radius: var(--cb-radius-card); padding: 1rem 1.2rem; margin: 1rem 0 1.2rem; box-shadow: var(--cb-shadow); }
+.cb-ready-main { min-width: 0; flex: 1 1 320px; display: grid; gap: 0.2rem; }
+.cb-ready-line { margin: 0; font-size: 1.15rem; font-weight: 600; display: flex; flex-wrap: wrap; gap: 0.3rem 0.5rem; align-items: center; }
+.cb-ready-tick { color: var(--success); font-size: 1.3rem; line-height: 1; }
+.cb-ready-notes { font-weight: 400; color: var(--ink-2); }
+.cb-ready .cb-saved-line, .cb-ready #download-name { margin: 0; }
+.cb-ready-actions { flex: 0 0 auto; }
+#open-in-app { margin-top: 0.6rem; }
+
+/* Steps: a small moss check once a step is done; the current-step style is unchanged. */
+.cb-steps button .cb-step-done { color: var(--success); margin-left: 0.3rem; font-weight: 700; }
+
+/* The lessons step's count line, and the Today line under an empty course. */
+.cb-lessons-count { margin: 0.8rem 0 0; color: var(--ink-2); font-weight: 600; }
+.cb-lesson-main .muted.small + .muted.small { font-size: 0.86rem; }
+
+/* The tray's guiding line for an empty week. */
+.cb-tray-hint { margin: 0; font-size: 0.84rem; color: var(--ink-2); line-height: 1.35; }
+
+/* The "lessons added" moment, in the toolbar's place, and the one-time row highlight. */
+.cb-added { background: var(--slate-soft); border: 1px solid var(--rule); border-left: 4px solid var(--success); border-radius: var(--cb-radius-card); padding: 0.9rem 1.1rem; margin-bottom: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; justify-content: space-between; }
+.cb-added p { margin: 0; font-weight: 600; }
+.cb-table tr.cb-new td { animation: cb-row-new 200ms ease-out 1; }
+@keyframes cb-row-new { from { background-color: var(--slate-soft); } to { background-color: transparent; } }
+@media (prefers-reduced-motion: reduce) { .cb-table tr.cb-new td { animation: none; } }
+
+/* Search lesson titles. */
+.cb-search { display: flex; flex-wrap: wrap; gap: 0.4rem 0.7rem; align-items: center; margin: 0 0 0.8rem; }
+.cb-search label { margin: 0; }
+.cb-search input[type="search"] { width: min(100%, 220px); min-height: 40px; }
+.cb-search-count { margin: 0; }
+
+/* Lesson rows: the phone summary button is hidden on desktop; "Left out" is said in words. */
+.cb-table .cb-col-summary { display: none; }
+.cb-tick { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; min-height: 40px; margin: 0; cursor: pointer; }
+.cb-left-out { margin: 0; align-self: center; }
+
+/* The sample dialog reuses the chooser cards. */
+#sample-dialog .cb-chooser-grid { margin-top: 0.4rem; }
+#sample-dialog p { margin: 0 0 0.6rem; }
+
+/* The phone's bottom bar, pinned; the page keeps room above it so its last control stays reachable. */
+.cb-phone-bar { display: none; }
+@media (max-width: 640px) {
+  .cb-phone-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom)); background: var(--paper-2); border-top: 1px solid var(--rule); box-shadow: 0 -6px 18px -12px rgba(0, 0, 0, 0.35); }
+  .cb-phone-bar .btn { min-height: 44px; min-width: 44px; padding: 0.55rem 1rem; }
+  .cb-phone-bar .btn:disabled { visibility: hidden; }
+  .cb-phone-step { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; color: var(--ink-2); white-space: nowrap; }
+  .cb { padding-bottom: 76px; }
+  .cb-panel { bottom: 0; padding-bottom: 5rem; border: 0; }
+  .cb-sheet-done { width: 100%; min-height: 48px; justify-content: center; margin-top: 0.4rem; }
+
+  /* Tap targets at 44 pt (Quarry's BUG-20261006-11). */
+  .cb-chip, .cb-shortcuts button, .cb-days button, .cb-tags .cb-chip, .cb-helper .cb-chip { min-height: 44px; padding: 0.4rem 0.9rem; }
+  .cb-steps button { min-height: 44px; }
+  .cb-lane-tabs button { min-height: 44px; }
+  .cb-rowtools button { min-height: 44px; padding: 0.5rem 0.8rem; }
+  .cb-handle { width: 44px; height: 44px; }
+  .cb-tick { min-width: 44px; min-height: 44px; }
+  .cb-table input[type="checkbox"] { width: 24px; height: 24px; margin: 0; }
+  .cb-link-btn { min-height: 44px; }
+  .cb-today li .cb-more { min-height: 44px; }
+
+  /* Compact lesson rows (Marlow's idea 8): one line each until tapped; one open at a time. */
+  .cb-table .cb-col-summary { display: block; grid-column: 1 / -1; }
+  .cb-row-open { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0 0.5rem; width: 100%; min-height: 44px; padding: 0.2rem 0.2rem; cursor: pointer; color: var(--ink); border-radius: 8px; line-height: 1.25; }
+  .cb-row-open:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+  .cb-row-num { font-family: var(--mono); font-size: 0.78rem; color: var(--cb-muted); align-self: start; padding-top: 0.15rem; grid-row: 1 / 3; }
+  .cb-row-title { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cb-row-meta { font-size: 0.8rem; color: var(--cb-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cb-table tr.excluded .cb-row-title { text-decoration: line-through; text-decoration-color: var(--ink-3); }
+  .cb-table tr:not(.is-open) > td:not(.cb-col-summary) { display: none; }
+  .cb-table tr { padding: 0.15rem 0.3rem; gap: 0 0.4rem; }
+  .cb-table tr.is-open { padding: 0.6rem 0.5rem; background: color-mix(in srgb, var(--slate-soft) 40%, transparent); }
+  .cb-table tr.is-open .cb-row-open { margin-bottom: 0.4rem; }
+}
+
+/* Mark Tally (Josh, October 6, 2026). Five strokes, no tile and no board.
+   Light ink is the packet's moss on paper; dark uses the page ink so the strokes stay visible. */
+.cb { --cb-mark: #40594e; }
+:root[data-theme="dark"] .cb { --cb-mark: var(--ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cb { --cb-mark: var(--ink); } }
+
+.cb-mark-position[hidden],
+.cb-mark-bubble[hidden],
+.cb-mark-done[hidden] { display: none !important; }
+
+.cb-mark-done {
+  position: fixed;
+  left: calc(50% - 77px);
+  top: calc(46vh - 66px);
+  width: 154px;
+  height: 132px;
+  z-index: 34;
+  pointer-events: none;
+  color: var(--cb-mark);
+}
+.cb-mark-performer {
+  width: 154px;
+  height: 132px;
+  transform-origin: 50% 86%;
+}
+.cb-mark-done:not([hidden]) .cb-mark-performer { will-change: transform, opacity; }
+.cb-mark-performer svg,
+.cb-mark-help svg { width: 100%; height: 100%; overflow: visible; display: block; }
+
+/* Corner helper. Above the phone bar, under the course sheet and the bar itself.
+   --cb-mark-clear grows while the site footer is on screen so the mark stays on paper. */
+.cb-mark-position {
+  position: fixed;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom), var(--cb-mark-clear, 0px));
+  z-index: 28;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.cb-mark-help {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 66px;
+  min-width: 44px;
+  height: 72px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--cb-mark);
+}
+.cb-mark-help svg { width: 64px; height: 52px; }
+.cb-mark-help-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--ink-2);
+}
+.cb-mark-bubble {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + var(--cb-mark-gap, 10px));
+  width: min(20rem, calc(100vw - 2.5rem - env(safe-area-inset-left) - env(safe-area-inset-right)));
+}
+.cb-mark-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  right: 26px;
+  width: 12px;
+  height: 12px;
+  background: var(--paper-2);
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transform: rotate(45deg);
+}
+.cb-mark-bubble-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.15rem 0.4rem;
+  max-height: min(22rem, calc(100dvh - 10rem - env(safe-area-inset-bottom)), var(--cb-mark-room, 100dvh));
+  overflow: auto;
+  padding: 0.9rem 1rem 1rem;
+  /* A short room spends its padding on the Close control instead of clipping it. */
+  padding-top: clamp(0px, calc(var(--cb-mark-room, 100dvh) - 46px), 0.9rem);
+  padding-bottom: clamp(0px, calc(var(--cb-mark-room, 100dvh) - 46px), 1rem);
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--cb-radius-card, 12px);
+  box-shadow: var(--cb-shadow);
+}
+.cb-mark-bubble .eyebrow { grid-column: 1; grid-row: 1; margin: 0; align-self: center; color: var(--ink-2); }
+.cb-mark-close {
+  grid-column: 2;
+  grid-row: 1;
+  width: 44px;
+  height: 44px;
+  margin: -0.4rem -0.35rem 0 0;
+  margin-top: max(-0.4rem, min(0px, calc(46px - var(--cb-mark-room, 100dvh))));
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.cb-mark-close:hover { background: var(--slate-soft); color: var(--ink); }
+.cb-mark-bubble h2 {
+  grid-column: 1 / -1;
+  margin: 0.15rem 0 0.7rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+.cb-mark-bubble ul {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.cb-mark-bubble li { margin: 0 0 0.45rem; }
+.cb-mark-bubble li:last-child { margin-bottom: 0; }
+
+/* Room so the last Lessons controls can sit clear of the corner mark. */
+.cb.cb-mark-on #screen-3 > .wrap,
+.cb.cb-mark-on #screen-4 > .wrap { padding-bottom: calc(7rem + env(safe-area-inset-bottom)); }
+/* The foot's actions set margin: 0 inline, so the clearance has to be padding on the row. */
+.cb.cb-mark-on #workspace .cb-ws-foot { padding-right: 5.25rem; }
+
+@media (max-width: 640px) {
+  .cb-mark-position {
+    right: max(0.85rem, env(safe-area-inset-right));
+    bottom: max(calc(76px + 0.75rem + env(safe-area-inset-bottom)), var(--cb-mark-clear, 0px));
+  }
+  /* The phone bar already pads .cb. This only clears the mark, which sits above that bar. */
+  .cb.cb-mark-on #screen-3 > .wrap,
+  .cb.cb-mark-on #screen-4 > .wrap { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+}

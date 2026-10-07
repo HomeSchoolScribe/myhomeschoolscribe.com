@@ -1,0 +1,280 @@
+{
+  "format": "homeschoolscribe.week",
+  "formatVersion": "2.0",
+  "fileId": "0a9b8c7d-6e5f-4d4c-b3a2-1f0e9d8c7b6a",
+  "createdAt": "2026-10-05T18:30:00-04:00",
+  "updatedAt": "2026-10-05T18:42:00-04:00",
+  "madeWith": {
+    "tool": "Course Builder",
+    "version": "2.0.0"
+  },
+  "source": {
+    "kind": "blank"
+  },
+  "schoolYear": {
+    "startYear": 2026,
+    "label": "2026-27"
+  },
+  "week": {
+    "days": [
+      {
+        "day": "mon",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "tue",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "wed",
+        "on": false,
+        "label": "Co-op"
+      },
+      {
+        "day": "thu",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "fri",
+        "on": true,
+        "label": ""
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "laneId": "c77ee5b2-95ce-4f78-8cc3-e0226df8e434",
+      "color": "blue",
+      "colorHex": "2E6B9E",
+      "grade": 3
+    },
+    {
+      "laneId": "1309f163-0275-4385-86d0-260900609f04",
+      "color": "green",
+      "colorHex": "3F7A4F",
+      "grade": 9
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "4551a1ec-7232-48b9-b5db-5ecec4156992",
+      "laneIds": [
+        "c77ee5b2-95ce-4f78-8cc3-e0226df8e434"
+      ],
+      "name": "Math",
+      "subject": "Math",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "tue",
+        "thu",
+        "fri"
+      ],
+      "minutes": 30,
+      "startDate": "2026-10-12",
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "3rd grade math workbook",
+      "notes": "Fact practice first, then the lesson.",
+      "resources": [
+        {
+          "resourceId": "427512ba-0742-4f08-92bc-467ba170b724",
+          "title": "3rd grade math workbook",
+          "author": "",
+          "isbn": "",
+          "kind": "Book",
+          "url": "",
+          "notes": "Second edition"
+        }
+      ],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "77305b21-8ee5-4d9a-8253-ab3ab0c803e0",
+          "title": "Lesson 1 · Place value",
+          "details": "Read pages 1-16. Do the odd problems on page 16.",
+          "minutes": null,
+          "unit": "Place value",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "d6db5112-f304-47e4-ba2b-f7e7f1b7f49f",
+          "title": "Lesson 2 · Place value",
+          "details": "Read pages 17-32. Do the odd problems on page 32.",
+          "minutes": null,
+          "unit": "Place value",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "c8782932-ac79-453e-b29b-438a30053b99",
+          "title": "Lesson 3 · Place value",
+          "details": "Read pages 33-48.",
+          "minutes": 35,
+          "unit": "Place value",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "fcc56383-6713-4ed9-a3ad-33467bf25423",
+          "title": "Quiz 1",
+          "details": "Quiz on pages 1-48. No calculator.",
+          "minutes": null,
+          "unit": "Place value",
+          "tags": [
+            "quiz"
+          ],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "d7268480-6984-48b0-8750-2499186a97e1",
+      "laneIds": [
+        "c77ee5b2-95ce-4f78-8cc3-e0226df8e434",
+        "1309f163-0275-4385-86d0-260900609f04"
+      ],
+      "name": "Read-aloud",
+      "subject": "Language Arts",
+      "colorHex": "",
+      "scheduleMode": "Loop",
+      "days": [
+        "tue",
+        "thu"
+      ],
+      "minutes": 20,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": false,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "926735b7-4895-4757-820e-58ca181ed034",
+          "title": "Chapter 1",
+          "details": "Listen, then tell back the chapter in your own words.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "628df0ba-dd35-4678-a82c-5e1c4c6d264a",
+          "title": "Chapter 2",
+          "details": "Draw your favorite scene.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "8ef94a90-b0ff-478f-a5ab-67ffd13ae2b7",
+      "laneIds": [
+        "1309f163-0275-4385-86d0-260900609f04"
+      ],
+      "name": "Biology",
+      "subject": "Science",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "thu",
+        "fri"
+      ],
+      "minutes": 45,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Points",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 150,
+      "curriculum": "High school biology textbook",
+      "notes": "",
+      "resources": [
+        {
+          "resourceId": "8c5f346e-3ac2-42a3-9666-0e2a1f403f2e",
+          "title": "High school biology textbook",
+          "author": "",
+          "isbn": "",
+          "kind": "Curriculum",
+          "url": "",
+          "notes": ""
+        }
+      ],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "1ef3a106-bb24-4c81-a752-7d3521c62266",
+          "title": "Module 1 · Cells",
+          "details": "Read section 1.1 and answer the review questions.",
+          "minutes": null,
+          "unit": "Cells",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "d77f61d8-cd50-474d-aff3-5126dee0c0a8",
+          "title": "Lab 1 · Onion cells",
+          "details": "Look at onion skin under the microscope. Sketch what you see.",
+          "minutes": 60,
+          "unit": "Cells",
+          "tags": [
+            "lab"
+          ],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "c83c8ea2-ca42-4186-8f37-9662e4dc60d0",
+          "title": "Quiz 1 · Cells",
+          "details": "Closed book.",
+          "minutes": null,
+          "unit": "Cells",
+          "tags": [
+            "quiz",
+            "graded"
+          ],
+          "pointsPossible": 20,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    }
+  ]
+}

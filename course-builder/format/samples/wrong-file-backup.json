@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "exportedAt": "2026-10-05T22:00:00Z",
+  "timeZone": "America/New_York",
+  "school": {
+    "schoolName": "",
+    "administratorName": "",
+    "addressLine": "",
+    "stateCode": "GA",
+    "gradingScale": "10-point"
+  },
+  "years": [],
+  "students": []
+}

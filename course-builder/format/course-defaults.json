@@ -1,0 +1,1237 @@
+{
+  "$comment": "Grade-band smart defaults, one list per GradeLevel raw value (-1 Pre-K ... 12). Mirrors YearStarter.band in the app; a Swift test compares them. Grading default is not in the band: K to 8th 'Narrative, no grade', 9th to 12th 'Points' (YearStarter.start).",
+  "gradingDefault": {
+    "belowGrade9": "Narrative, no grade",
+    "grade9AndUp": "Points"
+  },
+  "grades": {
+    "0": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 20,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "reading",
+        "name": "Reading",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 20,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "handwriting",
+        "name": "Handwriting",
+        "subject": "Language Arts",
+        "perWeek": 3,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Page {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 2,
+        "minutes": 25,
+        "credits": 1,
+        "titlePattern": "Exploration {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 2,
+        "minutes": 25,
+        "credits": 1,
+        "titlePattern": "Story {n}",
+        "isOn": true
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature Study",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ],
+    "1": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 20,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "reading",
+        "name": "Reading",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 20,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "handwriting",
+        "name": "Handwriting",
+        "subject": "Language Arts",
+        "perWeek": 3,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Page {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 2,
+        "minutes": 25,
+        "credits": 1,
+        "titlePattern": "Exploration {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 2,
+        "minutes": 25,
+        "credits": 1,
+        "titlePattern": "Story {n}",
+        "isOn": true
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature Study",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ],
+    "2": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 20,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "reading",
+        "name": "Reading",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 20,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "handwriting",
+        "name": "Handwriting",
+        "subject": "Language Arts",
+        "perWeek": 3,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Page {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 2,
+        "minutes": 25,
+        "credits": 1,
+        "titlePattern": "Exploration {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 2,
+        "minutes": 25,
+        "credits": 1,
+        "titlePattern": "Story {n}",
+        "isOn": true
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature Study",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ],
+    "3": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "languageArts",
+        "name": "Language Arts",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "handwriting",
+        "name": "Handwriting",
+        "subject": "Language Arts",
+        "perWeek": 2,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Page {n}",
+        "isOn": true
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 2,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature Study",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ],
+    "4": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "languageArts",
+        "name": "Language Arts",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "handwriting",
+        "name": "Handwriting",
+        "subject": "Language Arts",
+        "perWeek": 2,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Page {n}",
+        "isOn": false
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 2,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature Study",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ],
+    "5": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "languageArts",
+        "name": "Language Arts",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "handwriting",
+        "name": "Handwriting",
+        "subject": "Language Arts",
+        "perWeek": 2,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Page {n}",
+        "isOn": false
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 2,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature Study",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ],
+    "6": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "languageArts",
+        "name": "Language Arts",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 3,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 3,
+        "minutes": 35,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": false
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "technology",
+        "name": "Technology",
+        "subject": "Technology",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "7": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "languageArts",
+        "name": "Language Arts",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 3,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 3,
+        "minutes": 35,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": false
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "technology",
+        "name": "Technology",
+        "subject": "Technology",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "8": [
+      {
+        "id": "math",
+        "name": "Math",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "languageArts",
+        "name": "Language Arts",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science",
+        "subject": "Science",
+        "perWeek": 3,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "History",
+        "subject": "Social Studies",
+        "perWeek": 3,
+        "minutes": 35,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "art",
+        "name": "Art",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": false
+      },
+      {
+        "id": "music",
+        "name": "Music",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "technology",
+        "name": "Technology",
+        "subject": "Technology",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "9": [
+      {
+        "id": "math",
+        "name": "Algebra I",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 50,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Biology",
+        "subject": "Science",
+        "perWeek": 4,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Module {n}",
+        "isOn": true
+      },
+      {
+        "id": "english",
+        "name": "English 9",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Reading day {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "World Geography",
+        "subject": "Social Studies",
+        "perWeek": 4,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": true
+      },
+      {
+        "id": "fineArts",
+        "name": "Fine Arts",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 60,
+        "credits": 0.5,
+        "titlePattern": "Studio session {n}",
+        "isOn": false
+      },
+      {
+        "id": "elective",
+        "name": "Elective",
+        "subject": "Elective",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "10": [
+      {
+        "id": "math",
+        "name": "Geometry",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 50,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Chemistry",
+        "subject": "Science",
+        "perWeek": 4,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Module {n}",
+        "isOn": true
+      },
+      {
+        "id": "english",
+        "name": "English 10",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Reading day {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "World History",
+        "subject": "Social Studies",
+        "perWeek": 4,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "fineArts",
+        "name": "Fine Arts",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 60,
+        "credits": 0.5,
+        "titlePattern": "Studio session {n}",
+        "isOn": false
+      },
+      {
+        "id": "elective",
+        "name": "Elective",
+        "subject": "Elective",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "11": [
+      {
+        "id": "math",
+        "name": "Algebra II",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 50,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Physics",
+        "subject": "Science",
+        "perWeek": 4,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Module {n}",
+        "isOn": true
+      },
+      {
+        "id": "english",
+        "name": "English 11",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Reading day {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "U.S. History",
+        "subject": "Social Studies",
+        "perWeek": 4,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "fineArts",
+        "name": "Fine Arts",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 60,
+        "credits": 0.5,
+        "titlePattern": "Studio session {n}",
+        "isOn": false
+      },
+      {
+        "id": "elective",
+        "name": "Elective",
+        "subject": "Elective",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "12": [
+      {
+        "id": "math",
+        "name": "Pre-Calculus",
+        "subject": "Math",
+        "perWeek": 5,
+        "minutes": 50,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": true
+      },
+      {
+        "id": "science",
+        "name": "Science Elective",
+        "subject": "Science",
+        "perWeek": 4,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Module {n}",
+        "isOn": true
+      },
+      {
+        "id": "english",
+        "name": "English 12",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 45,
+        "credits": 1,
+        "titlePattern": "Reading day {n}",
+        "isOn": true
+      },
+      {
+        "id": "history",
+        "name": "Government & Economics",
+        "subject": "Social Studies",
+        "perWeek": 4,
+        "minutes": 40,
+        "credits": 1,
+        "titlePattern": "Chapter {n}",
+        "isOn": true
+      },
+      {
+        "id": "foreign",
+        "name": "Foreign Language",
+        "subject": "Foreign Language",
+        "perWeek": 3,
+        "minutes": 30,
+        "credits": 1,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "pe",
+        "name": "PE & Health",
+        "subject": "PE & Health",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Session {n}",
+        "isOn": false
+      },
+      {
+        "id": "fineArts",
+        "name": "Fine Arts",
+        "subject": "Fine Arts",
+        "perWeek": 1,
+        "minutes": 60,
+        "credits": 0.5,
+        "titlePattern": "Studio session {n}",
+        "isOn": false
+      },
+      {
+        "id": "elective",
+        "name": "Elective",
+        "subject": "Elective",
+        "perWeek": 2,
+        "minutes": 45,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      }
+    ],
+    "-1": [
+      {
+        "id": "readalouds",
+        "name": "Read-alouds",
+        "subject": "Language Arts",
+        "perWeek": 5,
+        "minutes": 15,
+        "credits": 0.5,
+        "titlePattern": "Story {n}",
+        "isOn": true
+      },
+      {
+        "id": "art",
+        "name": "Art & play",
+        "subject": "Fine Arts",
+        "perWeek": 2,
+        "minutes": 20,
+        "credits": 0.5,
+        "titlePattern": "Project {n}",
+        "isOn": true
+      },
+      {
+        "id": "counting",
+        "name": "Counting & shapes",
+        "subject": "Math",
+        "perWeek": 3,
+        "minutes": 10,
+        "credits": 0.5,
+        "titlePattern": "Lesson {n}",
+        "isOn": false
+      },
+      {
+        "id": "nature",
+        "name": "Nature walks",
+        "subject": "Science",
+        "perWeek": 1,
+        "minutes": 30,
+        "credits": 0.5,
+        "titlePattern": "Walk {n}",
+        "isOn": false
+      }
+    ]
+  }
+}

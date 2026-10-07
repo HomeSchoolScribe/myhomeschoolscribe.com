@@ -1,0 +1,1068 @@
+{
+  "format": "homeschoolscribe.week",
+  "formatVersion": "1.0",
+  "fileId": "4d001ac5-52fd-550e-a0df-367d3f591fc5",
+  "createdAt": "2026-10-06T18:00:00-04:00",
+  "updatedAt": "2026-10-06T18:00:00-04:00",
+  "madeWith": {
+    "tool": "Course Builder",
+    "version": "1.0.0"
+  },
+  "source": {
+    "kind": "sample",
+    "id": "two-children",
+    "label": "Two children, 3rd and 9th grade"
+  },
+  "schoolYear": {
+    "startYear": 2026,
+    "label": "2026-27"
+  },
+  "week": {
+    "days": [
+      {
+        "day": "mon",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "tue",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "wed",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "thu",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "fri",
+        "on": true,
+        "label": ""
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "laneId": "8d332409-bac8-5490-8697-a60b952d3757",
+      "color": "blue",
+      "colorHex": "2E6B9E",
+      "grade": 3
+    },
+    {
+      "laneId": "8e4f8905-a879-5bd2-a162-1131c34bf784",
+      "color": "green",
+      "colorHex": "2C6A4C",
+      "grade": 9
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "966a6e98-4393-57bc-9454-2c04e315a995",
+      "laneIds": [
+        "8d332409-bac8-5490-8697-a60b952d3757"
+      ],
+      "name": "Math",
+      "subject": "Math",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "minutes": 30,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "72d8d5f4-7c13-522f-bf91-9d5dafca97a4",
+          "title": "Lesson 1",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "4660aa25-a8dd-51eb-997b-282cb52d1f09",
+          "title": "Lesson 2",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "40308d9f-c0b1-59eb-9df4-79cd4b1d1f6f",
+          "title": "Lesson 3",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "960e1c85-d15b-588b-b9ff-a2babb380ebf",
+          "title": "Lesson 4",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "51e7e3d4-a7fb-5279-88a2-302c55537fc7",
+          "title": "Lesson 5",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "0c0ff3fb-300d-5cf7-a09c-3efd198d4b01",
+          "title": "Lesson 6",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "f5cc3568-7d5d-5dce-8c23-464dbe6ef649",
+          "title": "Lesson 7",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "2effbd4d-3767-5be4-a639-e5dda4f766b0",
+          "title": "Lesson 8",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "ea952fb5-1d25-5e36-94fd-06941d0a258c",
+          "title": "Lesson 9",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "a48b7d5c-14ca-5386-9f9e-024ced854ac1",
+          "title": "Lesson 10",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "38f8f5cb-4b25-519c-bb26-3e63cf88c2e1",
+          "title": "Lesson 11",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "30ad936a-3f39-565f-a306-e42ec7e6c6cb",
+          "title": "Lesson 12",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "31d53745-79f8-52de-a416-07f40248016c",
+          "title": "Lesson 13",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "1ce4abe9-10c1-5590-a865-01652692a44e",
+          "title": "Lesson 14",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "1407f449-632f-587e-bf20-20b5c25c3c8e",
+          "title": "Lesson 15",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "5356cd1e-6314-5c65-9160-6e18dd3ec618",
+          "title": "Lesson 16",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "3f9ffff5-0a9c-532f-a6e0-bf3ce84837a9",
+          "title": "Lesson 17",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "4605bd07-8aa9-5f69-a5ff-4343469d113e",
+          "title": "Lesson 18",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "24be68f4-6b1a-5518-884b-8e34067bdc3b",
+          "title": "Lesson 19",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "a6ba7808-b47e-5dba-9388-5a6e812eefbf",
+          "title": "Lesson 20",
+          "details": "Work the next practice page and check the answers together.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "e22cd391-053c-5c5a-b191-7b33e1aeadbf",
+      "laneIds": [
+        "8d332409-bac8-5490-8697-a60b952d3757"
+      ],
+      "name": "Language Arts",
+      "subject": "Language Arts",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "minutes": 30,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "47eabebc-5970-5991-bbf1-9d98109aded7",
+          "title": "Lesson 1",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "8246cecb-ba5c-5498-8edb-a2d73d76de9f",
+          "title": "Lesson 2",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "b7f2636e-e52d-5c67-a2bc-5d117bf1b084",
+          "title": "Lesson 3",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "0107941c-c678-5d41-b632-e01ec3134b36",
+          "title": "Lesson 4",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "a816691f-45f2-5818-9598-05e29888de52",
+          "title": "Lesson 5",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "74e9d632-00e2-5eb9-8886-248e8e329807",
+          "title": "Lesson 6",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "159b97c8-3ae6-53f1-9756-cc87045f8a44",
+          "title": "Lesson 7",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "10a899da-75ea-5c9e-a5a2-448ecf71cc44",
+          "title": "Lesson 8",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "bf73f892-9ce8-59be-88a8-b7585f753abe",
+          "title": "Lesson 9",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "d065e787-2bba-5518-80ce-12199b345690",
+          "title": "Lesson 10",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "8c32361a-e4fc-5fdb-a2b8-6bb5d8971689",
+          "title": "Lesson 11",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "97ac352c-90c8-5986-a5ea-cfa6a8e38304",
+          "title": "Lesson 12",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "8dd3a2c8-a5ff-5332-92d1-244726887615",
+          "title": "Lesson 13",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "c3b715b7-250c-5a63-949d-5f36aaf917dc",
+          "title": "Lesson 14",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "9b052cb2-c95c-583b-a870-9648b5af4ce8",
+          "title": "Lesson 15",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "ca2d430f-7c0a-50e4-adc4-33bc8e1a4b33",
+          "title": "Lesson 16",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "1df5f127-5ccb-500a-8618-088a1bee9296",
+          "title": "Lesson 17",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "0abcad75-7bfb-5582-8aa8-91aad73a25cd",
+          "title": "Lesson 18",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "1a4d5874-a551-5884-8fe9-069b953f54b0",
+          "title": "Lesson 19",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "4872af5e-6e3e-5a50-b66e-51181d2647f1",
+          "title": "Lesson 20",
+          "details": "Copy one sentence neatly, then read aloud for ten minutes.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "c3bc4cdd-9b6c-5635-9285-cbb26fd9b741",
+      "laneIds": [
+        "8e4f8905-a879-5bd2-a162-1131c34bf784"
+      ],
+      "name": "Algebra 1",
+      "subject": "Math",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "minutes": 50,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Points",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "308a8bac-c0fc-5aca-bead-0d5acef75334",
+          "title": "Lesson 1",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "1595d126-8422-5534-a840-7f26d5db6330",
+          "title": "Lesson 2",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "e0a6186a-0f79-5d49-8185-cf1884bc13c0",
+          "title": "Lesson 3",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "f594b4f1-3f9d-5cf3-8fdc-4eaa7e934651",
+          "title": "Lesson 4",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "c31d3ad8-4a99-5840-8269-97b6c24a4744",
+          "title": "Quiz 1",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [
+            "quiz",
+            "graded"
+          ],
+          "pointsPossible": 20,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "4628287c-6a30-5e24-9c96-c38a10c164ad",
+          "title": "Lesson 6",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "cfe30113-ea9e-5c76-997e-f0925a7ef95c",
+          "title": "Lesson 7",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "e466c30e-fc52-51e4-b187-1fad1a02c22b",
+          "title": "Lesson 8",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "7251a522-1351-506c-9304-0b907c8ca0ed",
+          "title": "Lesson 9",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "45876510-8993-52d7-9408-a479b088169a",
+          "title": "Quiz 2",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [
+            "quiz",
+            "graded"
+          ],
+          "pointsPossible": 20,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "89b575d3-2825-556e-8c29-22cc55a7508c",
+          "title": "Lesson 11",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "7dd83999-7914-5f38-be32-cf57ad791218",
+          "title": "Lesson 12",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "000940b7-f689-5ec9-8487-8ba01a1e931a",
+          "title": "Lesson 13",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "8042c39e-b182-506a-9911-c7e83e9aeac8",
+          "title": "Lesson 14",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "eb2abb32-ca77-546b-9d98-95540651d6d0",
+          "title": "Quiz 3",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [
+            "quiz",
+            "graded"
+          ],
+          "pointsPossible": 20,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "03ffc740-4c25-5d28-8d0f-ce97850cd730",
+          "title": "Lesson 16",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "da6fac40-d1b4-52a2-8910-fef1893099af",
+          "title": "Lesson 17",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "d2a11d5b-e73d-5f28-9b21-d7c286321111",
+          "title": "Lesson 18",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "97c620e7-7732-5436-b78e-8c613511e06c",
+          "title": "Lesson 19",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "dcd3d316-709f-5dfa-8b88-5574d82fcff2",
+          "title": "Quiz 4",
+          "details": "Work the next lesson's problem set; mark the ones to go over.",
+          "minutes": null,
+          "unit": null,
+          "tags": [
+            "quiz",
+            "graded"
+          ],
+          "pointsPossible": 20,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "f491404f-c0bf-5338-a1a0-9dbd1dc66e8b",
+      "laneIds": [
+        "8e4f8905-a879-5bd2-a162-1131c34bf784"
+      ],
+      "name": "Biology",
+      "subject": "Science",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "wed",
+        "fri"
+      ],
+      "minutes": 50,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Points",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 150,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "ae3d23ff-675b-51d4-b3c8-8559be695824",
+          "title": "The cell",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "34eec166-8f2b-549d-aef7-33b7056cd1eb",
+          "title": "Cell parts and their jobs",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "25bdef35-4460-5ab6-be6f-6e4c9f7566ab",
+          "title": "Lab: looking through a microscope",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "ad8ce6e7-07af-5207-bd87-544f073960b3",
+          "title": "Cells divide",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "9d6a2c06-5a86-5b6d-8a54-03a5a934938c",
+          "title": "Review: cells",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "7f333c6b-6431-5258-922f-eaa783fbbba8",
+          "title": "Genes and traits",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "812b5126-0e23-524f-8577-589f738cc0a7",
+          "title": "Lab: a family trait chart",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "64d9cfc5-43e6-5e52-bd64-54e11af17a1e",
+          "title": "Review: genes",
+          "details": "Read the next section and write three sentences about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "87c3d428-9050-5fdf-b3b7-4abda044aab8",
+      "laneIds": [
+        "8d332409-bac8-5490-8697-a60b952d3757",
+        "8e4f8905-a879-5bd2-a162-1131c34bf784"
+      ],
+      "name": "History read-aloud",
+      "subject": "Social Studies",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "tue",
+        "thu"
+      ],
+      "minutes": 30,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "2ea4baa5-6955-50f5-b272-e99ed8ae8a8d",
+          "title": "The first farmers",
+          "details": "Together: read the chapter aloud. Blue: draw one picture from it. Green: write a paragraph about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "4c0edfeb-b4d1-5cb8-a2de-4d59d0664fa0",
+          "title": "Rivers and cities",
+          "details": "Together: read the chapter aloud. Blue: draw one picture from it. Green: write a paragraph about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "b88628e8-5c84-5a7f-a0e7-250d8e888bd9",
+          "title": "Writing on clay",
+          "details": "Together: read the chapter aloud. Blue: draw one picture from it. Green: write a paragraph about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "c20bd881-9775-50ac-b059-3923c4df7c3e",
+          "title": "Kings and laws",
+          "details": "Together: read the chapter aloud. Blue: draw one picture from it. Green: write a paragraph about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "66d67ab4-ace6-59a5-8cda-7de4240661e0",
+          "title": "Review: the first cities",
+          "details": "Together: read the chapter aloud. Blue: draw one picture from it. Green: write a paragraph about it.",
+          "minutes": null,
+          "unit": null,
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "39719f22-2883-54c3-a9c0-d216b520496b",
+      "laneIds": [
+        "8d332409-bac8-5490-8697-a60b952d3757",
+        "8e4f8905-a879-5bd2-a162-1131c34bf784"
+      ],
+      "name": "PE",
+      "subject": "PE & Health",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "minutes": 20,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Pass/fail",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources": [],
+      "categories": [],
+      "lessons": []
+    }
+  ]
+}

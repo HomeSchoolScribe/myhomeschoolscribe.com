@@ -1,0 +1,174 @@
+{
+  "format": "homeschoolscribe.week",
+  "formatVersion": "1.0",
+  "fileId": "13e1cf08-64fb-449d-9726-637ed2d0df27",
+  "createdAt": "2026-10-05T18:30:00-04:00",
+  "updatedAt": "2026-10-05T18:42:00-04:00",
+  "madeWith": {
+    "tool": "Course Builder",
+    "version": "1.0.0"
+  },
+  "source": {
+    "kind": "blank"
+  },
+  "schoolYear": {
+    "startYear": 2026,
+    "label": "2026-27"
+  },
+  "week": {
+    "days": [
+      {
+        "day": "mon",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "tue",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "wed",
+        "on": false,
+        "label": "Co-op"
+      },
+      {
+        "day": "thu",
+        "on": true,
+        "label": ""
+      },
+      {
+        "day": "fri",
+        "on": true,
+        "label": ""
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "laneId": "c77ee5b2-95ce-4f78-8cc3-e0226df8e434",
+      "color": "blue",
+      "colorHex": "2E6B9E",
+      "grade": 3
+    },
+    {
+      "laneId": "1309f163-0275-4385-86d0-260900609f04",
+      "color": "green",
+      "colorHex": "3F7A4F",
+      "grade": 9
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "4551a1ec-7232-48b9-b5db-5ecec4156992",
+      "laneIds": [
+        "c77ee5b2-95ce-4f78-8cc3-e0226df8e434"
+      ],
+      "name": "Math",
+      "subject": "Math",
+      "colorHex": "",
+      "scheduleMode": "On the calendar",
+      "days": [
+        "mon",
+        "tue",
+        "thu",
+        "fri"
+      ],
+      "minutes": 30,
+      "startDate": "2026-10-12",
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": true,
+      "targetHours": 0,
+      "curriculum": "3rd grade math workbook",
+      "notes": "Fact practice first, then the lesson.",
+      "resources": [
+        {
+          "resourceId": "427512ba-0742-4f08-92bc-467ba170b724",
+          "title": "3rd grade math workbook",
+          "author": "",
+          "isbn": "",
+          "kind": "Book",
+          "url": "",
+          "notes": "Second edition"
+        }
+      ],
+      "categories": [],
+      "lessons": [
+        {
+          "lessonId": "77305b21-8ee5-4d9a-8253-ab3ab0c803e0",
+          "title": "Lesson 1 · Place value",
+          "details": "Read pages 1-16. Do the odd problems on page 16.",
+          "minutes": null,
+          "unit": "Place value",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "d6db5112-f304-47e4-ba2b-f7e7f1b7f49f",
+          "title": "Lesson 2 · Place value",
+          "details": "Read pages 17-32. Do the odd problems on page 32.",
+          "minutes": null,
+          "unit": "Place value",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "c8782932-ac79-453e-b29b-438a30053b99",
+          "title": "Lesson 3 · Place value",
+          "details": "Read pages 33-48.",
+          "minutes": 35,
+          "unit": "Place value",
+          "tags": [],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        },
+        {
+          "lessonId": "fcc56383-6713-4ed9-a3ad-33467bf25423",
+          "title": "Quiz 1",
+          "details": "Quiz on pages 1-48. No calculator.",
+          "minutes": null,
+          "unit": "Place value",
+          "tags": [
+            "quiz"
+          ],
+          "pointsPossible": null,
+          "categoryId": null,
+          "include": true
+        }
+      ]
+    },
+    {
+      "courseId": "d7268480-6984-48b0-8750-2499186a97e1",
+      "laneIds": [
+        "c77ee5b2-95ce-4f78-8cc3-e0226df8e434",
+        "1309f163-0275-4385-86d0-260900609f04"
+      ],
+      "name": "Read-aloud",
+      "subject": "Language Arts",
+      "colorHex": "",
+      "scheduleMode": "Loop",
+      "days": [
+        "tue",
+        "thu"
+      ],
+      "minutes": 20,
+      "startDate": null,
+      "startAtLesson": 1,
+      "spreadOverYear": false,
+      "gradingMode": "Narrative, no grade",
+      "level": "Regular",
+      "credits": 1,
+      "includeOnTranscript": false,
+      "targetHours": 0,
+      "curriculum": "",
+      "notes": "",
+      "resources":
