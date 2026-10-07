@@ -9,7 +9,7 @@
 // it). The week object never carries them, and the saved draft never does either.
 
 import * as H from "./format/hssweek.js";
-import { lessonsDoneShouldPlay, mountMarkTally, playLessonsDone, syncMarkTally } from "./mark-tally.js?v=20261007b";
+import { lessonsDoneShouldPlay, mountMarkTally, playLessonsDone, syncMarkTally } from "./mark-tally.js?v=20261007c";
 
 // MARK: - State
 
@@ -367,7 +367,14 @@ function go(n) {
   if (n !== 2) stopPlacing();
   const top = $("#builder").getBoundingClientRect().top + window.scrollY - 70;
   window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
-  syncMarkTally(state.ui.screen);
+  syncMarkTally(markScreenKey());
+}
+
+/** Which tip set Mark Tally shows: the step, or the course panel while it is open on the week. */
+function markScreenKey() {
+  const n = state.ui.screen;
+  if (n === 2) return state.ui.selectedCourseId && courseById(state.ui.selectedCourseId) ? "course" : "week";
+  return { 0: "start", 1: "who", 3: "lessons", 4: "workspace", 5: "preview", 6: "review" }[n] ?? "workspace";
 }
 
 /** Which steps are finished: a child added, a course on a day, every course with lessons (or skipped), the preview seen. */
@@ -900,6 +907,8 @@ function renderPanel() {
   const panel = $("#course-panel");
   const course = courseById(state.ui.selectedCourseId);
   const layout = $(".cb-week-layout");
+  // The course panel is its own surface for Mark Tally's tips (Marlow's course-panel set).
+  if (state.ui.screen === 2) syncMarkTally(course ? "course" : "week");
   if (!course) {
     panel.hidden = true;
     panel.replaceChildren();

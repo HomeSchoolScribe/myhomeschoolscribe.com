@@ -18,8 +18,8 @@ import assert from "node:assert/strict";
 import * as H from "../format/hssweek.js";
 import { validateSchema } from "../format/schema-check.js";
 import {
-  BUBBLE_ROOM_INSET, DONE_MS, FOOTER_GAP, GREETING, LESSON_TIPS, QUIET_MS, STROKE_SPANS, STROKE_STARTS, STROKES,
-  bubblePlacement, bubbleRoom, footerClearance, lessonsDoneShouldPlay, poseAt,
+  BUBBLE_ROOM_INSET, DONE_MS, FOOTER_GAP, GREETING, LESSON_TIPS, QUIET_MS, SCREEN_TIPS, STROKE_SPANS, STROKE_STARTS, STROKES,
+  bubblePlacement, bubbleRoom, footerClearance, helpLabel, lessonsDoneShouldPlay, poseAt,
 } from "../mark-tally.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -1318,8 +1318,34 @@ test("the hop is asked for only after Lessons Done actually leaves the workspace
   assert.match(markCss, /var\(--cb-mark-clear,\s*0px\)/);
   assert.doesNotMatch(markCss, /site-footer/);
   const shipped = read(join(builderDir, "mark-tally.js")) + "\n" + markCss;
-  assert.match(shipped, /Help from Mark Tally: lesson tips/);
+  assert.equal(helpLabel("workspace"), "Help from Mark Tally: lesson tips");
+  void shipped;
   assert.doesNotMatch(shipped, /Pattern fill|leave it out|playhead|Slow motion|little bounce|Meet your little helper/i);
+});
+
+test("Mark Tally has a tip set for every Course Builder screen, in Marlow's words (Oct 6 tips file)", () => {
+  const keys = ["start", "who", "week", "course", "lessons", "workspace", "preview", "review"];
+  assert.deepEqual(Object.keys(SCREEN_TIPS), keys);
+  for (const key of keys) {
+    const { name, tips } = SCREEN_TIPS[key];
+    assert.equal(tips.length, 3, `${key}: three tips`);
+    for (const tip of tips) {
+      assert.doesNotMatch(tip, /[*`_]|\u2014|!|free trial|Pattern fill|Fill down|Left out/i, `${key}: plain text, house style, current names: ${tip}`);
+      assert.ok(tip.length <= 140, `${key}: short: ${tip}`);
+    }
+    assert.equal(helpLabel(key), `Help from Mark Tally: ${name.toLowerCase()} tips`);
+    assert.match(helpLabel(key), /^Help /, "the visible word Help stays in the accessible name");
+  }
+  assert.deepEqual(SCREEN_TIPS.workspace.tips, LESSON_TIPS, "the workspace keeps the set Quarry passed at 608ba08");
+  assert.equal(SCREEN_TIPS.start.tips[0], "Tap Start my week to plan here in the browser. Nothing is sent to us.");
+  assert.equal(SCREEN_TIPS.who.tips[1], "A first name here is just for this screen. Names never go in the file.");
+  assert.equal(SCREEN_TIPS.week.tips[2], "Tap a block to set name, schedule, and minutes. The number on a block is its minutes.", "one-height pills: the minutes are the capsule, not the height");
+  assert.equal(SCREEN_TIPS.review.tips[1], "Download my week makes one .hssweek file. The app only adds; it never replaces what you already have.");
+  assert.equal(GREETING, "Hey, Mark Tally here. How can I help?");
+  const js = read(join(builderDir, "builder.js"));
+  assert.equal((js.match(/closeWorkspace\(\{ celebrate: true \}\)/g) ?? []).length, 1, "the hop still has one trigger");
+  assert.match(js, /syncMarkTally\(markScreenKey\(\)\)/);
+  assert.match(js, /syncMarkTally\(course \? "course" : "week"\)/);
 });
 
 test("Mark Tally lifts above the site footer and stays put while the footer is below", () => {

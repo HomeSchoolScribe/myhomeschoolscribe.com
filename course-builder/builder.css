@@ -840,8 +840,10 @@
 .cb-mark-bubble li:last-child { margin-bottom: 0; }
 
 /* Room so the last Lessons controls can sit clear of the corner mark. */
-.cb.cb-mark-on #screen-3 > .wrap,
-.cb.cb-mark-on #screen-4 > .wrap { padding-bottom: calc(7rem + env(safe-area-inset-bottom)); }
+.cb.cb-mark-on .cb-screen > .wrap { padding-bottom: calc(7rem + env(safe-area-inset-bottom)); }
+/* On the Start board the strokes and the label go chalk; the bubble stays a paper card. */
+.cb.cb-mark-on-board .cb-mark-help { color: var(--chalk); }
+.cb.cb-mark-on-board .cb-mark-help-label { color: rgba(247, 245, 240, 0.92); }
 /* The foot's actions set margin: 0 inline, so the clearance has to be padding on the row. */
 .cb.cb-mark-on #workspace .cb-ws-foot { padding-right: 5.25rem; }
 
@@ -851,6 +853,5 @@
     bottom: max(calc(76px + 0.75rem + env(safe-area-inset-bottom)), var(--cb-mark-clear, 0px));
   }
   /* The phone bar already pads .cb. This only clears the mark, which sits above that bar. */
-  .cb.cb-mark-on #screen-3 > .wrap,
-  .cb.cb-mark-on #screen-4 > .wrap { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+  .cb.cb-mark-on .cb-screen > .wrap { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
 }

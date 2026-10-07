@@ -11,11 +11,59 @@
 
 export const GREETING = "Hey, Mark Tally here. How can I help?";
 
-export const LESSON_TIPS = Object.freeze([
-  "Use Number or divide pages to make Lesson 1, Lesson 2, \u2026 or split a book by pages.",
-  "Paste titles, then review the rows.",
-  "Untick a row so it isn\u2019t added when you open the file in the app.",
-]);
+/**
+ * Two or three tips for the current screen (Marlow's MARK-TALLY-TIPS-BY-SCREEN.md, October 6, 2026;
+ * Quarry's every-screen handoff). `name` is the eyebrow and the accessible name's screen word:
+ * "Help from Mark Tally: <name> tips". The workspace set is the one Quarry passed at 608ba08.
+ */
+export const SCREEN_TIPS = Object.freeze({
+  start: Object.freeze({ name: "Start", tips: Object.freeze([
+    "Tap Start my week to plan here in the browser. Nothing is sent to us.",
+    "When you\u2019re done, one file opens in the app and only adds. Nothing you already have changes.",
+    "Prefer a shared computer? Tick Private session. Or open a file you made, or start from a sample.",
+  ]) }),
+  who: Object.freeze({ name: "Who\u2019s learning", tips: Object.freeze([
+    "Add a child, pick a color and a grade. In the app you\u2019ll match Blue, Green, and so on to real names.",
+    "A first name here is just for this screen. Names never go in the file.",
+    "The school year names the download (for example Our week 2026-27).",
+  ]) }),
+  week: Object.freeze({ name: "Your week", tips: Object.freeze([
+    "Add a course in a lane, then drag it onto days or tap Every day, M-W-F, or T-Th.",
+    "Tap a day header to gray it out (co-op, field trip). That\u2019s a planning hint; the app keeps its own school days.",
+    "Tap a block to set name, schedule, and minutes. The number on a block is its minutes.",
+  ]) }),
+  course: Object.freeze({ name: "Course", tips: Object.freeze([
+    "On the calendar dates each lesson. Loop keeps lessons in order with no dates, handy for read-alouds.",
+    "Share a block across lanes, or tick another child, for Teach together: one plan, more than one child.",
+    "Minutes and days here shape the week grid and what the app schedules later.",
+  ]) }),
+  lessons: Object.freeze({ name: "Lessons", tips: Object.freeze([
+    "Tap a course to open its lesson list. Empty courses are fine; you can plan them later in the app.",
+    "Fill the ones you\u2019re ready for now. Skip the rest and keep going to Preview.",
+    "When you tap Done in a course\u2019s lesson list, Mark Tally hops for that save.",
+  ]) }),
+  workspace: Object.freeze({ name: "Lesson", tips: Object.freeze([
+    "Use Number or divide pages to make Lesson 1, Lesson 2, \u2026 or split a book by pages.",
+    "Paste titles, then review the rows.",
+    "Untick a row so it isn\u2019t added when you open the file in the app.",
+  ]) }),
+  preview: Object.freeze({ name: "Preview", tips: Object.freeze([
+    "Pick a child and a day to see it the way the app\u2019s Today layout looks.",
+    "Finish dates are estimates. The app uses your real school days and away days.",
+    "Day look thin or packed? Go back to Your week and move blocks.",
+  ]) }),
+  review: Object.freeze({ name: "Review your plan", tips: Object.freeze([
+    "Red items block the download; fix those first. Yellow ones are notes you can leave.",
+    "Download my week makes one .hssweek file. The app only adds; it never replaces what you already have.",
+    "Then AirDrop or open the file in Files, or in the app: Courses, then +, then From a Course Builder file\u2026",
+  ]) }),
+});
+
+/** The lesson workspace's tips, the set Quarry passed at 608ba08. */
+export const LESSON_TIPS = SCREEN_TIPS.workspace.tips;
+
+/** The accessible name of the helper on a screen: the visible "Help" word stays in it. */
+export const helpLabel = (key) => `Help from Mark Tally: ${(SCREEN_TIPS[key] ?? SCREEN_TIPS.workspace).name.toLowerCase()} tips`;
 
 /** Happy hop, then a short fade. Quiet finish when the device asks for less motion. */
 export const DONE_MS = 900;
@@ -161,6 +209,9 @@ let position = null;
 let bubble = null;
 let button = null;
 let heading = null;
+let kicker = null;
+let tipList = null;
+let currentKey = null;
 let overlay = null;
 let performer = null;
 let lines = [];
@@ -273,13 +324,25 @@ function schedulePlace() {
   placeFrame = requestAnimationFrame(placeHelper);
 }
 
-/** Shows or hides the corner mark. Lessons tips only exist for the Lessons step and its workspace. */
-export function syncMarkTally(screen) {
+/**
+ * Mark is on every screen (Josh, October 6, 2026); the bubble carries the current screen's tips.
+ * `key` is a SCREEN_TIPS key. Changing screens closes an open bubble so the tips never lag.
+ */
+export function syncMarkTally(key) {
   if (!position || !builder) return;
-  const on = screen === 3 || screen === 4;
-  position.hidden = !on;
-  builder.classList.toggle("cb-mark-on", on);
-  if (!on) closeHelp(false);
+  const screen = SCREEN_TIPS[key] ? key : "workspace";
+  const was = currentKey;
+  currentKey = screen;
+  position.hidden = false;
+  builder.classList.add("cb-mark-on");
+  // The Start screen is the dark board, so the strokes and label go chalk there.
+  builder.classList.toggle("cb-mark-on-board", screen === "start");
+  if (kicker) kicker.textContent = SCREEN_TIPS[screen].name;
+  if (button) button.setAttribute("aria-label", helpLabel(screen));
+  if (tipList) {
+    tipList.replaceChildren(...SCREEN_TIPS[screen].tips.map((tip) => { const item = document.createElement("li"); item.textContent = tip; return item; }));
+  }
+  if (was !== null && was !== screen) closeHelp(false);
   schedulePlace();
 }
 
@@ -324,9 +387,9 @@ export function mountMarkTally(root) {
 
   const card = document.createElement("div");
   card.className = "cb-mark-bubble-card";
-  const kicker = document.createElement("p");
+  kicker = document.createElement("p");
   kicker.className = "eyebrow";
-  kicker.textContent = "Lessons";
+  kicker.textContent = SCREEN_TIPS.workspace.name;
   heading = document.createElement("h2");
   heading.id = "cb-mark-heading";
   heading.tabIndex = -1;
@@ -338,20 +401,20 @@ export function mountMarkTally(root) {
   close.className = "cb-mark-close";
   close.setAttribute("aria-label", "Close Mark Tally\u2019s tips");
   close.textContent = "\u00d7";
-  const list = document.createElement("ul");
+  tipList = document.createElement("ul");
   for (const tip of LESSON_TIPS) {
     const item = document.createElement("li");
     item.textContent = tip;
-    list.append(item);
+    tipList.append(item);
   }
-  card.append(kicker, heading, close, list);
+  card.append(kicker, heading, close, tipList);
   bubble.append(card);
 
   button = document.createElement("button");
   button.type = "button";
   button.className = "cb-mark-help";
   button.id = "cb-mark-help";
-  button.setAttribute("aria-label", "Help from Mark Tally: lesson tips");
+  button.setAttribute("aria-label", helpLabel("workspace"));
   button.setAttribute("aria-controls", "cb-mark-bubble");
   button.setAttribute("aria-expanded", "false");
   const helpMark = tallySvg();
@@ -447,7 +510,10 @@ export function mountMarkTally(root) {
     lastGap = -1;
     position.remove();
     overlay.remove();
-    builder.classList.remove("cb-mark-on");
+    builder.classList.remove("cb-mark-on", "cb-mark-on-board");
+    kicker = null;
+    tipList = null;
+    currentKey = null;
     builder = null;
     position = null;
     bubble = null;
