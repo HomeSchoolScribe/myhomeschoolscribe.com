@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // Launch-list links (utm_campaign=launch-list) land on /join/, tags and all. Placed first in the
+  // home page <head>, before the Amplitude loader, so the redirected visit is counted once (on /join/).
+  if (new URLSearchParams(location.search).get("utm_campaign") === "launch-list") {
+    location.replace("/join/" + location.search + location.hash);
+  }
+</script>
 <title>HomeSchool Scribe: Homeschool Planner and Record Keeper for iPhone and iPad</title>
 <meta name="description" content="The homeschool planner that keeps the records for you. Check off the day; attendance, hours, report cards, transcripts and state documents build themselves.">
 <link rel="canonical" href="https://www.myhomeschoolscribe.com/">

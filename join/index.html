@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join the launch list | HomeSchool Scribe</title>
+<meta name="description" content="Be the first to know when HomeSchool Scribe is on the App Store.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.myhomeschoolscribe.com/join/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Join the launch list | HomeSchool Scribe">
+<meta property="og:site_name" content="HomeSchool Scribe">
+<meta property="og:description" content="Be the first to know when HomeSchool Scribe is on the App Store.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.myhomeschoolscribe.com/join/">
+<meta property="og:image" content="https://www.myhomeschoolscribe.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.myhomeschoolscribe.com/assets/img/og.png">
+<meta name="theme-color" content="#1E2823">
+<meta name="p:domain_verify" content="01aed3c2afd3f5c467194a78cc413408"/>
+<meta name="google-site-verification" content="uyakyGaXcTMdCrQNfzRR2PB7ibszg_JJ2bjnA3vRAR0" />
+<link rel="stylesheet" href="/assets/site.css">
+<script src="https://cdn.amplitude.com/script/eb0a17ef853d1570df33b3ece8c77520.js"></script>
+<script>
+  window.amplitude.init("eb0a17ef853d1570df33b3ece8c77520", { autocapture: true, fetchRemoteConfig: true });
+  window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+</script>
+<script>
+  // The one page event (the Amplitude loader above is byte-identical to every other page).
+  if (window.amplitude) window.amplitude.track("Viewed Join Page");
+</script>
+<style>
+  /* Join page only. Option A chalkboard palette from site.css; the board stays dark in both themes. */
+  html, body { height:100%; }
+  body.join { background:var(--board); color:var(--chalk); display:flex; flex-direction:column; min-height:100vh; min-height:100dvh; }
+  .join main { flex:1; display:flex; align-items:center; justify-content:center; padding:calc(1.5rem + env(safe-area-inset-top)) 1.25rem 1.5rem; }
+  .join .card { width:100%; max-width:30rem; text-align:center; }
+  .join .lockup { display:block; width:200px; max-width:62%; height:auto; margin:0 auto 2rem; }
+  .join h1 { color:var(--chalk); font-size:clamp(2.1rem, 9vw, 3rem); line-height:1.1; letter-spacing:-0.015em; }
+  .join .sub { color:rgba(247,245,240,0.86); font-size:1.15rem; line-height:1.45; margin:0.8rem auto 1.75rem; max-width:30ch; text-wrap:balance; }
+  @media (min-width: 700px) { .join .sub { font-size:1.3rem; } }
+  .join .signup { display:flex; flex-direction:column; gap:0.8rem; margin:0; }
+  .join .signup input[type="email"] { flex:none; width:100%; box-sizing:border-box; font-family:var(--sans); font-size:1.25rem; min-height:3.75rem; padding:0.85rem 1.1rem;
+    border:2px solid rgba(247,245,240,0.9); border-radius:12px; background:#FFFFFF; color:#1E2A33; text-align:center; }
+  .join input[type="email"]::placeholder { color:#6E7B86; }
+  .join input[type="email"]:focus { outline:3px solid #8FBDE3; outline-offset:2px; }
+  .join button { width:100%; min-height:3.75rem; font-family:var(--sans); font-weight:600; font-size:1.25rem; padding:0.85rem 1.1rem; border-radius:12px;
+    border:0; background:#2E6B9E; color:#F7F5F0; cursor:pointer; }
+  .join button:hover { filter:brightness(1.08); }
+  .join button:focus-visible { outline:3px solid #F7F5F0; outline-offset:2px; }
+  .join footer { text-align:center; padding:1rem 1rem calc(1.25rem + env(safe-area-inset-bottom)); font-size:0.85rem;
+    border-bottom:10px solid var(--wood); box-shadow:inset 0 -11px 0 var(--wood-edge); }
+  .join footer a { color:rgba(247,245,240,0.62); }
+</style>
+</head>
+<body class="join">
+<main>
+  <div class="card">
+    <img class="lockup" src="/assets/img/06-lockup-horizontal-dark.svg" alt="HomeSchool Scribe" width="400" height="100">
+    <h1>Join the launch list</h1>
+    <p class="sub">Be the first to know when HomeSchool Scribe is on the App&nbsp;Store.</p>
+    <form class="signup" id="join-form" action="https://myhomeschoolscribe.us12.list-manage.com/subscribe/post?u=46ed1f1293002cac13916c661&amp;id=05f14e778b" method="post">
+      <label class="visually-hidden" for="mce-EMAIL-launch">Email address</label>
+      <input class="amp-mask" type="email" name="EMAIL" id="mce-EMAIL-launch" placeholder="you@example.com" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <input type="hidden" name="SIGNUP" value="launch">
+      <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_46ed1f1293002cac13916c661_05f14e778b" tabindex="-1" value=""></div>
+      <button type="submit">Tell me when it launches</button>
+    </form>
+  </div>
+</main>
+<footer><a href="/privacy.html">Privacy policy</a></footer>
+</body>
+</html>
