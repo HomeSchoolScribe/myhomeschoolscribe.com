@@ -65,10 +65,26 @@
       <label class="visually-hidden" for="mce-EMAIL-launch">Email address</label>
       <input type="email" name="EMAIL" id="mce-EMAIL-launch" placeholder="you@example.com" required autocomplete="email">
       <input type="hidden" name="SIGNUP" value="launch">
+      <input type="hidden" name="SOURCE" value="">
+      <input type="hidden" name="MEDIUM" value="">
+      <input type="hidden" name="CAMPAIGN" value="">
       
       <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_46ed1f1293002cac13916c661_05f14e778b" tabindex="-1" value=""></div>
       <button class="btn btn-chalk" type="submit">Tell me when it launches</button>
     </form>
+<script>
+  // The link's utm_source, utm_medium and utm_campaign go into the hidden SOURCE, MEDIUM and CAMPAIGN
+  // fields so they post with the sign-up. Read from this page's own address only; no cookies, no
+  // storage, nothing kept unless the visitor submits. Empty when a tag is missing; 100 characters at most.
+  (function () {
+    var q = new URLSearchParams(location.search);
+    document.querySelectorAll("form.signup").forEach(function (f) {
+      [["utm_source", "SOURCE"], ["utm_medium", "MEDIUM"], ["utm_campaign", "CAMPAIGN"]].forEach(function (p) {
+        if (f.elements[p[1]]) f.elements[p[1]].value = (q.get(p[0]) || "").slice(0, 100);
+      });
+    });
+  })();
+</script>
       </div>
     </div>
     <div class="phone"><img src="/assets/img/shot-02-today.png" alt="The Today screen: the family's children with their portraits, the shared Morning Basket, and each child's lessons for the day checked off" width="720" height="1215"></div>
