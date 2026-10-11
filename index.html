@@ -332,5 +332,31 @@
     <p class="fine">&copy; 2026 HomeSchool Scribe. HomeSchool Scribe and the tally mark are our trademarks. Made in Villa Rica, Georgia. HomeSchool Scribe is not legal advice; confirm requirements with your state.</p>
   </div>
 </footer>
+<script>
+  // The one explicit event (FIX-LIST row 136c): a load-time event on the home page. Autocapture
+  // covers generic interactions; nothing else is instrumented by hand.
+  window.amplitude?.track("Viewed Home Page", { prompt_version: "BA400.4" });
+
+  // The "Your state" picker: the eight summaries in website-state-summaries.js fill the dropdown
+  // and the card. This block used to share a <script> with the draw-on logo intro and was lost
+  // with it on October 6, 2026 (bcbda57), so the live dropdown read "No Options" until October 11.
+  // The masthead fade-in is CSS (.intro.fade); nothing here touches it. Keep this block on its own.
+  const reqs = {
+    "Georgia": "<b>Georgia.</b> Declaration of Intent online within 30 days of starting and by September 1 each year. 180 days at 4.5 hours. Annual written progress assessment kept three years. A standardized test every three years from grade 3. HomeSchool Scribe reminds you on August 18, prepares the DOI worksheet, and stores your confirmation code.",
+    "New York": "<b>New York.</b> Letter of intent by July 1, IHIP by August 15, four quarterly reports on your IHIP dates, an annual assessment filed with the fourth quarterly report; 900 hours in grades 1–6 and 990 in grades 7–12, over 180 days. HomeSchool Scribe drafts the IHIP from your courses and builds each quarterly report from the hours and grades you already logged.",
+    "Pennsylvania": "<b>Pennsylvania.</b> Notarized affidavit by August 1 with objectives by subject; 180 days or 900/990 hours; a portfolio with a reading log by title and work samples; evaluator certification by June 30. HomeSchool Scribe prints the portfolio index and the objectives worksheet.",
+    "Florida": "<b>Florida.</b> Notice of intent within 30 days; a portfolio with a log of activities and materials kept two years; an annual evaluation by the anniversary of your notice. HomeSchool Scribe keeps the log as you check off lessons and reminds you a month before the anniversary.",
+    "North Carolina": "<b>North Carolina.</b> One-time notice of intent to DNPE; nine-month term; attendance and immunization records; an annual standardized test kept one year. HomeSchool Scribe prints the attendance register and reminds you to test.",
+    "Virginia": "<b>Virginia.</b> Notice of intent by August 15 with a curriculum description; evidence of progress by August 1. HomeSchool Scribe writes the curriculum description from your courses.",
+    "Ohio": "<b>Ohio.</b> Notify your superintendent by August 30 (or within five days of withdrawing); no hours or testing since 2023. HomeSchool Scribe prints the notification letter with the assurance language and reminds you to look for the acknowledgment within 14 days.",
+    "Texas": "<b>Texas.</b> Nothing to file. Keep a bona fide curriculum in reading, spelling, grammar, math, and good citizenship. HomeSchool Scribe keeps the records anyway, so a transcript is ready when a college asks."
+  };
+  const sel = document.getElementById("state-select");
+  const card = document.querySelector("#state-card p");
+  Object.keys(reqs).forEach(s => { const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o); });
+  const slug = s => s.toLowerCase().replace(/[^a-z]+/g, "-");
+  const show = () => { card.innerHTML = reqs[sel.value] + ' <a href="/states/' + slug(sel.value) + '.html">Read the ' + sel.value + ' guide</a>'; };
+  sel.addEventListener("change", show); show();
+</script>
 </body>
 </html>
