@@ -247,7 +247,7 @@
       <div>
         <label for="state-select">State</label>
         <select id="state-select"></select>
-        <p class="state-note">Eight states shown here; the app covers all fifty and DC, with a reminder before every date your state sets. <a href="/states/">Read the guide for every state</a>.</p>
+        <p class="state-note">All fifty states and DC. The app keeps the calendar, reminds you before every date, and prepares the documents. <a href="/states/">Read the guide for every state</a>.</p>
       </div>
       <div class="state-card" id="state-card" aria-live="polite"><p></p></div>
     </div>
@@ -334,28 +334,74 @@
 </footer>
 <script>
   // The one explicit event (FIX-LIST row 136c): a load-time event on the home page. Autocapture
-  // covers generic interactions; nothing else is instrumented by hand.
+  // covers generic interactions; nothing else is instrumented by hand. One concern per <script>
+  // tag: the State picker below has its own, so an edit to one cannot take the other with it.
   window.amplitude?.track("Viewed Home Page", { prompt_version: "BA400.4" });
-
-  // The "Your state" picker: the eight summaries in website-state-summaries.js fill the dropdown
-  // and the card. This block used to share a <script> with the draw-on logo intro and was lost
-  // with it on October 6, 2026 (bcbda57), so the live dropdown read "No Options" until October 11.
-  // The masthead fade-in is CSS (.intro.fade); nothing here touches it. Keep this block on its own.
+</script>
+<script>
+  // The "Your state" picker: all 51 summaries from the app's StateRequirements.json (Georgia first,
+  // then alphabetical) fill the dropdown and the card. This code used to share a <script> with the
+  // draw-on logo intro and was lost with it on October 6, 2026 (bcbda57), so the live dropdown read
+  // "No Options" until October 11. The masthead fade-in is CSS; nothing here touches it. Keep this
+  // block on its own.
   const reqs = {
-    "Georgia": "<b>Georgia.</b> Declaration of Intent online within 30 days of starting and by September 1 each year. 180 days at 4.5 hours. Annual written progress assessment kept three years. A standardized test every three years from grade 3. HomeSchool Scribe reminds you on August 18, prepares the DOI worksheet, and stores your confirmation code.",
-    "New York": "<b>New York.</b> Letter of intent by July 1, IHIP by August 15, four quarterly reports on your IHIP dates, an annual assessment filed with the fourth quarterly report; 900 hours in grades 1–6 and 990 in grades 7–12, over 180 days. HomeSchool Scribe drafts the IHIP from your courses and builds each quarterly report from the hours and grades you already logged.",
-    "Pennsylvania": "<b>Pennsylvania.</b> Notarized affidavit by August 1 with objectives by subject; 180 days or 900/990 hours; a portfolio with a reading log by title and work samples; evaluator certification by June 30. HomeSchool Scribe prints the portfolio index and the objectives worksheet.",
-    "Florida": "<b>Florida.</b> Notice of intent within 30 days; a portfolio with a log of activities and materials kept two years; an annual evaluation by the anniversary of your notice. HomeSchool Scribe keeps the log as you check off lessons and reminds you a month before the anniversary.",
-    "North Carolina": "<b>North Carolina.</b> One-time notice of intent to DNPE; nine-month term; attendance and immunization records; an annual standardized test kept one year. HomeSchool Scribe prints the attendance register and reminds you to test.",
-    "Virginia": "<b>Virginia.</b> Notice of intent by August 15 with a curriculum description; evidence of progress by August 1. HomeSchool Scribe writes the curriculum description from your courses.",
-    "Ohio": "<b>Ohio.</b> Notify your superintendent by August 30 (or within five days of withdrawing); no hours or testing since 2023. HomeSchool Scribe prints the notification letter with the assurance language and reminds you to look for the acknowledgment within 14 days.",
-    "Texas": "<b>Texas.</b> Nothing to file. Keep a bona fide curriculum in reading, spelling, grammar, math, and good citizenship. HomeSchool Scribe keeps the records anyway, so a transcript is ready when a college asks."
-  };
+    "Georgia": "Submit a Declaration of Intent to the state each year, teach 180 days of at least 4.5 hours, write an annual progress report, and test every three years starting in grade 3.",
+    "Alabama": "Most families homeschool by enrolling in a church school (which files an enrollment form with the local superintendent) or under a certified private tutor.",
+    "Alaska": "Alaska has one of the least regulated homeschool options: no notice, testing, or reporting is required when a parent teaches their own child.",
+    "Arizona": "File a one-time affidavit of intent with the county school superintendent within 30 days of starting.",
+    "Arkansas": "Submit a notice of intent to the local superintendent each year (by August 15, or 14 days before withdrawing a child mid-year).",
+    "California": "Most independent homeschoolers establish a home-based private school by filing the Private School Affidavit each October, keeping an attendance register and course list.",
+    "Colorado": "File a notice of intent 14 days before starting each year; teach 172 days averaging four hours a day; test or evaluate at grades 3, 5, 7, 9, and 11.",
+    "Connecticut": "Connecticut has no statutory notice or reporting requirement; state guidelines suggest a voluntary notice and year-end portfolio review.",
+    "Delaware": "Register the homeschool with the Department of Education and report enrollment in the fall and attendance at year end.",
+    "District of Columbia": "File an annual notice, hold a high school diploma or equivalent, teach the required subjects, and keep a portfolio available for review.",
+    "Florida": "Send a notice of intent within 30 days of starting, keep a portfolio for two years, and submit an annual evaluation to the district.",
+    "Hawaii": "Notify the local school principal, keep records, submit an annual progress report, and test in grades 3, 5, 8, and 10.",
+    "Idaho": "No notice, testing, or reporting: parents provide instruction comparable to public schools in the subjects commonly taught.",
+    "Illinois": "Homeschools operate as private schools with no notice or reporting; instruction must be in English and cover the branches taught in public schools.",
+    "Indiana": "Provide instruction equivalent to public schools for 180 days and keep attendance records; no notice is required unless requested.",
+    "Iowa": "Choose between Independent Private Instruction (no notice or reporting) and Competent Private Instruction (annual Form A with optional assessment).",
+    "Kansas": "Register your homeschool once as a non-accredited private school with the state board and teach for a period substantially equivalent to public schools.",
+    "Kentucky": "Send an annual letter to the local superintendent within two weeks of starting, teach 185 days (or 1,062 hours), and keep attendance and scholarship records.",
+    "Louisiana": "Apply annually for the state-approved Home Study Program (180 days plus evidence of progress) or register as a non-accredited private school with a simpler notice.",
+    "Maine": "File a notice of intent each year, teach 175 days in the required subjects, and submit an annual assessment.",
+    "Maryland": "Notify the county 15 days before starting, teach the required subjects on a regular basis, and keep a portfolio the county may review up to three times a year (or enroll under a church or umbrella program).",
+    "Massachusetts": "Obtain approval from the local school committee or superintendent by submitting an education plan; districts commonly ask for progress reports or testing.",
+    "Michigan": "No notice, testing, or reporting is required under the homeschool option; teach the listed subjects with a parent as the instructor.",
+    "Minnesota": "Submit a letter of intent by October 1 each year, teach the required subjects, and give an annual nationally normed test (results kept by the family).",
+    "Mississippi": "File a certificate of enrollment with the county school attendance officer by August 15 each year.",
+    "Missouri": "No notice is required, but you must log 1,000 hours of instruction per year (600 in core subjects, 400 of those at the regular home location) and keep records.",
+    "Montana": "Notify the county superintendent each year, teach the same number of hours as public schools, and keep attendance and immunization records.",
+    "Nebraska": "File an exemption form with the state each year and teach 1,032 hours (elementary) or 1,080 hours (high school).",
+    "Nevada": "File a one-time notice of intent with an educational plan; no testing or reporting afterward.",
+    "New Hampshire": "Since July 2026 New Hampshire asks for no notice, no evaluation and no records. A short declaration goes to the district only if you are taking a child out of a public school, or you want to use public school programs.",
+    "New Jersey": "No notice, testing, or reporting; provide instruction &#x27;equivalent&#x27; to public schools.",
+    "New Mexico": "Notify the state within 30 days of starting and by August 1 each year, hold a high school diploma or GED, and teach 180 days.",
+    "New York": "Submit an annual notice and an Individualized Home Instruction Plan (IHIP), file quarterly reports, log 900/990 hours over 180 days, and submit an annual assessment.",
+    "North Carolina": "File a one-time notice of intent with the Division of Non-Public Education, operate nine months a year, keep attendance and immunization records, and test annually.",
+    "North Dakota": "File a statement of intent 14 days before starting each year, teach 175 days of four hours, and give standardized tests in grades 4, 6, 8, and 10.",
+    "Ohio": "Since the 2023 law change, families only notify the district each year; the former 900-hour and annual-assessment requirements no longer apply.",
+    "Oklahoma": "No notice or reporting; the state constitution protects home education taught in good faith for the equivalent of the public school year.",
+    "Oregon": "Notify the regional Education Service District once within 10 days of starting and test in grades 3, 5, 8, and 10.",
+    "Pennsylvania": "File a notarized affidavit each year, log 180 days or 900/990 hours, keep a portfolio, test in grades 3, 5, and 8, and have an approved evaluator certify progress annually.",
+    "Rhode Island": "Obtain approval from the local school committee, keep an attendance register, and teach for a period substantially equal to public schools.",
+    "South Carolina": "Choose one of three options: district approval, SCAIHS membership, or a homeschool association of at least 50 members; all use a 180-day year.",
+    "South Dakota": "File a one-time notification (with a birth certificate) with the local district; annual testing was removed in 2021.",
+    "Tennessee": "Homeschool independently (annual notice, 180 days of 4 hours, attendance, testing in grades 5, 7, and 9) or through a church-related umbrella school with its own requirements.",
+    "Texas": "No notice or reporting; homeschools are private schools that must use a bona fide curriculum covering five basic subjects.",
+    "Utah": "File a one-time affidavit or notice with the local district; no testing or reporting afterward.",
+    "Vermont": "Submit an enrollment notice with a minimum course of study each year and an end-of-year assessment.",
+    "Virginia": "File a notice of intent by August 15 with proof of qualification, then submit evidence of progress by August 1 the following year (or claim the religious exemption).",
+    "Washington": "File a declaration of intent each year, meet a parent qualification, teach the required subjects, and test or assess annually.",
+    "West Virginia": "File a one-time notice of intent with your diploma, then assess annually and submit results in grades 3, 5, 8, and 11.",
+    "Wisconsin": "File the online PI-1206 form by October 15 each year and provide 875 hours of a sequentially progressive curriculum.",
+    "Wyoming": "Submit your curriculum to the local school board each year showing a basic academic program."
+};
   const sel = document.getElementById("state-select");
   const card = document.querySelector("#state-card p");
   Object.keys(reqs).forEach(s => { const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o); });
   const slug = s => s.toLowerCase().replace(/[^a-z]+/g, "-");
-  const show = () => { card.innerHTML = reqs[sel.value] + ' <a href="/states/' + slug(sel.value) + '.html">Read the ' + sel.value + ' guide</a>'; };
+  const show = () => { card.innerHTML = '<b>' + sel.value + '.</b> ' + reqs[sel.value] + ' <a href="/states/' + slug(sel.value) + '.html">Read the ' + sel.value + ' guide</a>'; };
   sel.addEventListener("change", show); show();
 </script>
 </body>
